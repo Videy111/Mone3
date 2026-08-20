@@ -82,6 +82,7 @@
        ============================== -->
 
   <style>
+
     * {
       box-sizing: border-box;
     }
@@ -96,10 +97,12 @@
     }
 
     .video-container {
+      position: relative;
       width: 100%;
       max-width: 700px;
       margin: 0 auto;
       background: #000;
+      overflow: hidden;
     }
 
     video {
@@ -107,34 +110,86 @@
       width: 100%;
       height: auto;
       background: #000;
+      transition:
+        filter 0.4s ease,
+        opacity 0.4s ease;
     }
 
-    /* Tombol Lanjutkan */
-    #continueButton {
+    /* ==============================
+       EFEK VIDEO SETELAH 20 DETIK
+       ============================== */
+
+    .video-container.locked video {
+      filter: blur(6px) brightness(0.45);
+    }
+
+
+    /* ==============================
+       OVERLAY
+       ============================== */
+
+    .video-overlay {
+      position: absolute;
+      inset: 0;
+
       display: none;
-      width: 100%;
-      max-width: 700px;
-      margin: 15px auto;
-      padding: 14px 20px;
+
+      align-items: center;
+      justify-content: center;
+
+      background: rgba(0, 0, 0, 0.20);
+
+      z-index: 10;
+    }
+
+    .video-container.locked .video-overlay {
+      display: flex;
+    }
+
+
+    /* ==============================
+       TOMBOL LANJUTKAN
+       ============================== */
+
+    #continueButton {
+
+      padding: 15px 30px;
+
       border: none;
-      border-radius: 8px;
+      border-radius: 10px;
+
       background: #2196f3;
       color: #fff;
-      font-size: 18px;
+
+      font-size: 20px;
       font-weight: bold;
+
       cursor: pointer;
+
+      box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.5);
+
+      transition:
+        transform 0.2s ease,
+        opacity 0.2s ease;
     }
 
     #continueButton:hover {
-      opacity: 0.9;
+      transform: scale(1.05);
+      opacity: 0.95;
     }
+
+    #continueButton:active {
+      transform: scale(0.98);
+    }
+
   </style>
 
 </head>
 
 <body>
 
-  <div class="video-container">
+  <div class="video-container" id="videoContainer">
 
     <video
       id="videoPlayer"
@@ -152,10 +207,18 @@
 
     </video>
 
-    <!-- Tombol muncul setelah 20 detik -->
-    <button id="continueButton">
-      Lanjutkan
-    </button>
+
+    <!-- ==============================
+         OVERLAY TOMBOL
+         ============================== -->
+
+    <div class="video-overlay">
+
+      <button id="continueButton">
+        ▶ Lanjutkan
+      </button>
+
+    </div>
 
   </div>
 
@@ -166,13 +229,30 @@
 
   <script>
 
-    const video = document.getElementById("videoPlayer");
-    const continueButton = document.getElementById("continueButton");
+    const video =
+      document.getElementById("videoPlayer");
+
+    const videoContainer =
+      document.getElementById("videoContainer");
+
+    const continueButton =
+      document.getElementById("continueButton");
+
+
+    /* ==============================
+       DIRECT LINK
+       ============================== */
 
     const directLink =
       "https://www.effectivecpmnetwork.com/jajsmmts?key=3379e30611a4277cdd49864562b580a3";
 
+
     let buttonShown = false;
+
+
+    /* ==============================
+       SETELAH 20 DETIK
+       ============================== */
 
     video.addEventListener("timeupdate", function () {
 
@@ -184,7 +264,16 @@
 
         buttonShown = true;
 
-        continueButton.style.display = "block";
+        /*
+         * Pause video
+         */
+        video.pause();
+
+
+        /*
+         * Tambahkan efek blur + gelap
+         */
+        videoContainer.classList.add("locked");
 
       }
 
