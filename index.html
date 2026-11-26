@@ -1,401 +1,1124 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#070812">
 
-  <title>▶️ TRENDING - Lanjutkan Video</title>
+<title>▶️ TRENDING - Tonton Video</title>
 
-  <!-- FACEBOOK PREVIEW -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="▶️ TRENDING - Tonton Video">
-  <meta property="og:description" content="Klik untuk melanjutkan dan menonton video.">
+<meta name="description" content="Tonton video terbaru. Klik tonton iklan terlebih dahulu untuk melanjutkan ke video.">
 
-  <!-- GANTI DENGAN URL GAMBAR KAMU -->
-  <meta property="og:image" content="https://jpcdn.it/img/de8a8157501ac660988d9ba5fdf3a2fc.jpg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
+<meta property="og:type" content="website">
+<meta property="og:title" content="▶️ TRENDING - Tonton Video">
+<meta property="og:description" content="Tonton video terbaru. Klik tonton iklan terlebih dahulu untuk melanjutkan.">
+<meta property="og:image" content="https://jpcdn.it/img/78cdf523e00fb268089737a9a79c0a76.jpg">
+<meta property="og:image:alt" content="▶️ TRENDING">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="▶️ TRENDING">
 
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="▶️ TRENDING - Tonton Video">
-  <meta name="twitter:description" content="Klik untuk melanjutkan dan menonton video.">
-  <meta name="twitter:image" content="GANTI-DENGAN-URL-GAMBAR-KAMU">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="▶️ TRENDING - Tonton Video">
+<meta name="twitter:description" content="Tonton video terbaru. Klik tonton iklan terlebih dahulu untuk melanjutkan.">
+<meta name="twitter:image" content="https://jpcdn.it/img/78cdf523e00fb268089737a9a79c0a76.jpg">
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+<style>
 
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background:
-        radial-gradient(circle at top, #26164d 0%, #100c20 45%, #08070d 100%);
-      color: #fff;
-      min-height: 100vh;
-    }
+:root{
+  --bg:#070812;
+  --panel:#111321;
+  --text:#f7f8ff;
+  --muted:#9ca3b8;
+  --line:rgba(255,255,255,.10);
+  --purple:#8b5cf6;
+  --blue:#38bdf8;
+  --pink:#ec4899;
+}
 
-    .container {
-      width: 100%;
-      max-width: 520px;
-      margin: 0 auto;
-      padding: 20px 15px 40px;
-    }
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
 
-    .topbar {
-      text-align: center;
-      padding: 10px 0 18px;
-    }
+html{
+  background:var(--bg);
+}
 
-    .logo {
-      font-size: 25px;
-      font-weight: 900;
-      letter-spacing: 1px;
-    }
+body{
+  min-height:100vh;
+  color:var(--text);
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Arial,
+    sans-serif;
 
-    .logo span {
-      color: #9b5cff;
-    }
+  background:
+    radial-gradient(
+      circle at 15% 0%,
+      rgba(139,92,246,.22),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 90% 10%,
+      rgba(56,189,248,.14),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 50% 75%,
+      rgba(236,72,153,.08),
+      transparent 35%
+    ),
+    linear-gradient(
+      145deg,
+      #070812 0%,
+      #0b0d18 50%,
+      #070812 100%
+    );
+}
 
-    .card {
-      background: rgba(20, 15, 37, 0.96);
-      border: 1px solid rgba(153, 92, 255, 0.25);
-      border-radius: 18px;
-      padding: 16px;
-      box-shadow: 0 15px 40px rgba(0,0,0,.45);
-    }
+button{
+  font:inherit;
+}
 
-    .poster {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      object-fit: cover;
-      display: block;
-      border-radius: 13px;
-      background: #171222;
-      border: 1px solid rgba(255,255,255,.08);
-    }
+.topbar{
+  position:sticky;
+  top:0;
+  z-index:20;
 
-    .title {
-      font-size: 22px;
-      font-weight: 800;
-      text-align: center;
-      margin-top: 18px;
-    }
+  height:62px;
 
-    .description {
-      color: #c9c3d8;
-      font-size: 14px;
-      line-height: 1.6;
-      text-align: center;
-      margin-top: 10px;
-    }
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
 
-    .notice {
-      margin-top: 18px;
-      padding: 13px;
-      border-radius: 12px;
-      background: rgba(155, 92, 255, 0.10);
-      border: 1px solid rgba(155, 92, 255, 0.22);
-      color: #ddd5ec;
-      font-size: 13px;
-      line-height: 1.5;
-      text-align: center;
-    }
+  padding:0 16px;
 
-    .btn {
-      width: 100%;
-      display: block;
-      border: 0;
-      border-radius: 13px;
-      padding: 15px 18px;
-      margin-top: 16px;
-      font-size: 15px;
-      font-weight: 800;
-      text-align: center;
-      text-decoration: none;
-      cursor: pointer;
-      transition: .2s ease;
-    }
+  background:rgba(7,8,18,.84);
 
-    .btn:active {
-      transform: scale(.98);
-    }
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
 
-    .btn-ad {
-      color: #fff;
-      background: linear-gradient(135deg, #8d4cff, #bd67ff);
-      box-shadow: 0 8px 25px rgba(155, 92, 255, .28);
-    }
+  border-bottom:1px solid var(--line);
+}
 
-    .btn-confirm {
-      color: #fff;
-      background: linear-gradient(135deg, #00a86b, #00d084);
-      box-shadow: 0 8px 25px rgba(0, 208, 132, .20);
-    }
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
 
-    .btn-disabled {
-      opacity: .45;
-      pointer-events: none;
-      cursor: default;
-    }
+  font-weight:800;
+}
 
-    #confirmArea {
-      display: none;
-    }
+.brand-mark{
+  width:36px;
+  height:36px;
 
-    .status {
-      text-align: center;
-      font-size: 13px;
-      color: #aaa1b8;
-      margin-top: 13px;
-      line-height: 1.5;
-    }
+  display:grid;
+  place-items:center;
 
-    .success {
-      color: #55e6a7;
-    }
+  border-radius:11px;
 
-    .footer {
-      text-align: center;
-      color: #777080;
-      font-size: 11px;
-      margin-top: 22px;
-    }
-  </style>
+  background:
+    linear-gradient(
+      135deg,
+      var(--purple),
+      var(--blue)
+    );
+
+  box-shadow:
+    0 8px 25px
+    rgba(139,92,246,.28);
+}
+
+.brand span{
+  font-size:15px;
+}
+
+main{
+  width:min(650px,100%);
+  margin:auto;
+
+  padding:
+    24px
+    16px
+    50px;
+}
+
+.hero{
+  text-align:center;
+}
+
+.hero h1{
+  font-size:
+    clamp(25px,7vw,38px);
+
+  line-height:1.15;
+
+  letter-spacing:-.6px;
+
+  margin-bottom:10px;
+}
+
+.hero p{
+  color:var(--muted);
+
+  font-size:14px;
+
+  line-height:1.6;
+
+  max-width:500px;
+
+  margin:
+    0 auto 20px;
+}
+
+.video-card{
+  position:relative;
+
+  overflow:hidden;
+
+  border-radius:22px;
+
+  background:#000;
+
+  border:
+    1px solid
+    rgba(255,255,255,.12);
+
+  box-shadow:
+    0 25px 80px
+    rgba(0,0,0,.48),
+    0 0 55px
+    rgba(99,102,241,.10);
+}
+
+.video-card img{
+  display:block;
+
+  width:100%;
+
+  aspect-ratio:16/10;
+
+  object-fit:cover;
+}
+
+.image-overlay{
+  position:absolute;
+
+  inset:0;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0,0,0,.05),
+      rgba(0,0,0,.55)
+    );
+}
+
+.play-circle{
+  width:76px;
+  height:76px;
+
+  display:grid;
+  place-items:center;
+
+  padding-left:4px;
+
+  border-radius:50%;
+
+  color:#fff;
+
+  font-size:30px;
+
+  background:
+    rgba(0,0,0,.70);
+
+  border:
+    1px solid
+    rgba(255,255,255,.40);
+
+  box-shadow:
+    0 12px 40px
+    rgba(0,0,0,.60),
+    0 0 0 8px
+    rgba(255,255,255,.05);
+
+  backdrop-filter:blur(8px);
+}
+
+.badge{
+  position:absolute;
+
+  left:13px;
+  top:13px;
+
+  padding:7px 10px;
+
+  border-radius:999px;
+
+  font-size:11px;
+
+  font-weight:700;
+
+  color:#fff;
+
+  background:
+    rgba(8,9,18,.68);
+
+  border:
+    1px solid
+    rgba(255,255,255,.13);
+
+  backdrop-filter:blur(10px);
+}
+
+.video-info{
+  padding:17px 2px 0;
+}
+
+.video-title{
+  font-size:20px;
+
+  font-weight:800;
+
+  line-height:1.3;
+}
+
+.video-description{
+  margin-top:7px;
+
+  color:var(--muted);
+
+  font-size:13px;
+
+  line-height:1.55;
+}
+
+.steps{
+  margin-top:22px;
+
+  padding:18px;
+
+  border-radius:18px;
+
+  background:
+    rgba(18,20,35,.80);
+
+  border:
+    1px solid
+    var(--line);
+}
+
+.steps-title{
+  font-size:15px;
+
+  font-weight:800;
+
+  margin-bottom:14px;
+}
+
+.step{
+  display:flex;
+
+  align-items:flex-start;
+
+  gap:12px;
+
+  margin-top:13px;
+}
+
+.step:first-of-type{
+  margin-top:0;
+}
+
+.step-number{
+  width:28px;
+  height:28px;
+
+  flex:0 0 28px;
+
+  display:grid;
+  place-items:center;
+
+  border-radius:9px;
+
+  font-size:12px;
+
+  font-weight:800;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--purple),
+      var(--blue)
+    );
+}
+
+.step-text{
+  padding-top:3px;
+
+  color:#d8daE8;
+
+  font-size:13px;
+
+  line-height:1.45;
+}
+
+.action-area{
+  margin-top:20px;
+}
+
+.action-button{
+  width:100%;
+
+  min-height:58px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  gap:10px;
+
+  padding:15px 18px;
+
+  border:0;
+
+  border-radius:16px;
+
+  color:#fff;
+
+  font-size:17px;
+
+  font-weight:800;
+
+  text-decoration:none;
+
+  cursor:pointer;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--purple),
+      #6366f1,
+      var(--blue)
+    );
+
+  box-shadow:
+    0 12px 35px
+    rgba(99,102,241,.28);
+
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease,
+    opacity .2s ease;
+}
+
+.action-button:hover{
+  transform:translateY(-1px);
+
+  box-shadow:
+    0 15px 40px
+    rgba(99,102,241,.38);
+}
+
+.action-button:active{
+  transform:scale(.98);
+}
+
+.action-button.disabled{
+  opacity:.45;
+
+  cursor:not-allowed;
+
+  box-shadow:none;
+}
+
+.action-button.hidden{
+  display:none;
+}
+
+.status{
+  margin-top:10px;
+
+  text-align:center;
+
+  color:#9ca3b8;
+
+  font-size:11px;
+
+  line-height:1.5;
+}
+
+.ad-section{
+  margin-top:20px;
+
+  padding:18px;
+
+  text-align:center;
+
+  border-radius:18px;
+
+  background:
+    rgba(18,20,35,.68);
+
+  border:
+    1px solid
+    var(--line);
+}
+
+.ad-icon{
+  width:45px;
+  height:45px;
+
+  margin:
+    0 auto 10px;
+
+  display:grid;
+  place-items:center;
+
+  border-radius:14px;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--purple),
+      var(--blue)
+    );
+
+  font-size:18px;
+}
+
+.ad-section h2{
+  font-size:17px;
+
+  line-height:1.3;
+}
+
+.ad-section p{
+  margin-top:7px;
+
+  color:var(--muted);
+
+  font-size:12px;
+
+  line-height:1.5;
+}
+
+.ad-button{
+  margin-top:15px;
+
+  width:100%;
+
+  min-height:52px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  border-radius:14px;
+
+  color:#fff;
+
+  text-decoration:none;
+
+  font-size:15px;
+
+  font-weight:800;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ec4899,
+      #8b5cf6
+    );
+
+  box-shadow:
+    0 10px 30px
+    rgba(139,92,246,.24);
+
+  cursor:pointer;
+}
+
+.ad-button:active{
+  transform:scale(.98);
+}
+
+.confirm-section{
+  display:none;
+
+  margin-top:20px;
+
+  padding:19px;
+
+  text-align:center;
+
+  border-radius:18px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(139,92,246,.15),
+      rgba(56,189,248,.08)
+    );
+
+  border:
+    1px solid
+    rgba(139,92,246,.32);
+}
+
+.confirm-section.show{
+  display:block;
+}
+
+.confirm-section h2{
+  font-size:18px;
+
+  line-height:1.3;
+}
+
+.confirm-section p{
+  margin-top:7px;
+
+  color:var(--muted);
+
+  font-size:12px;
+
+  line-height:1.5;
+}
+
+.confirm-button{
+  margin-top:15px;
+
+  width:100%;
+
+  min-height:55px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  border:0;
+
+  border-radius:15px;
+
+  color:#fff;
+
+  font-size:16px;
+
+  font-weight:800;
+
+  text-decoration:none;
+
+  background:
+    linear-gradient(
+      135deg,
+      #22c55e,
+      #16a34a
+    );
+
+  box-shadow:
+    0 10px 30px
+    rgba(34,197,94,.20);
+
+  cursor:pointer;
+}
+
+.note{
+  margin-top:12px;
+
+  color:#7f859a;
+
+  font-size:10px;
+
+  line-height:1.5;
+
+  text-align:center;
+}
+
+footer{
+  margin-top:25px;
+
+  text-align:center;
+
+  color:#73798c;
+
+  font-size:11px;
+}
+
+@media(max-width:600px){
+
+  main{
+    padding:
+      20px
+      11px
+      40px;
+  }
+
+  .topbar{
+    height:58px;
+
+    padding:
+      0 12px;
+  }
+
+  .video-card{
+    border-radius:16px;
+  }
+
+  .play-circle{
+    width:66px;
+    height:66px;
+
+    font-size:26px;
+  }
+
+  .video-title{
+    font-size:19px;
+  }
+
+  .steps{
+    padding:16px;
+  }
+
+  .action-button{
+    min-height:56px;
+  }
+
+}
+
+</style>
 </head>
 
 <body>
 
-<div class="container">
+<header class="topbar">
 
-  <div class="topbar">
-    <div class="logo">▶️ <span>TRENDING</span></div>
+  <div class="brand">
+
+    <div class="brand-mark">
+      ▶
+    </div>
+
+    <span>
+      Video Player
+    </span>
+
   </div>
 
-  <div class="card">
+</header>
 
-    <!-- GANTI URL GAMBAR INI -->
-    <img
-      class="poster"
-      src="GANTI-DENGAN-URL-GAMBAR-KAMU"
-      alt="Trending Video"
-    >
 
-    <h1 class="title">
-      Tonton Video Trending
+<main>
+
+  <section class="hero">
+
+    <h1>
+      ▶️ Tonton Video
     </h1>
 
-    <p class="description">
-      Untuk melanjutkan ke video, silakan buka halaman iklan terlebih dahulu.
-      Setelah kembali ke halaman ini, tombol untuk melanjutkan ke video akan muncul.
+    <p>
+      Sebelum melanjutkan ke video, silakan
+      tonton iklan terlebih dahulu.
     </p>
 
-    <div class="notice" id="notice">
-      🔒 Silakan buka iklan terlebih dahulu untuk melanjutkan.
-    </div>
+  </section>
 
-    <!-- TOMBOL IKLAN -->
-    <a
-      id="adButton"
-      class="btn btn-ad"
-      href="https://www.profitableratecpmnetwork.com/dzth71h9?key=0d1e630d97de4d34d79e6dd18d6a2fe8"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      🔥 BUKA IKLAN
-    </a>
 
-    <div class="status" id="status">
-      Setelah membuka iklan, kembali ke halaman ini.
-    </div>
+  <!-- POSTER / GAMBAR VIDEO -->
 
-    <!-- KONFIRMASI -->
-    <div id="confirmArea">
+  <section class="video-card">
 
-      <a
-        id="continueButton"
-        class="btn btn-confirm"
-        href="trending.html"
-      >
-        ▶️ KONFIRMASI & LANJUTKAN
-      </a>
+    <img
+      src="https://jpcdn.it/img/78cdf523e00fb268089737a9a79c0a76.jpg"
+      alt="Preview Video"
+      loading="eager">
 
-      <div class="status success">
-        ✅ Iklan sudah dibuka.<br>
-        Klik tombol di atas untuk melanjutkan ke video.
+    <div class="image-overlay">
+
+      <div class="play-circle">
+        ▶
       </div>
 
     </div>
 
+    <div class="badge">
+      HD • Mobile Friendly
+    </div>
+
+  </section>
+
+
+  <section class="video-info">
+
+    <div class="video-title">
+      Video Terbaru
+    </div>
+
+    <div class="video-description">
+      Tekan tombol di bawah untuk menonton
+      iklan dan membuka video.
+    </div>
+
+  </section>
+
+
+  <!-- PETUNJUK -->
+
+  <section class="steps">
+
+    <div class="steps-title">
+      Cara melanjutkan
+    </div>
+
+    <div class="step">
+
+      <div class="step-number">
+        1
+      </div>
+
+      <div class="step-text">
+        Tekan tombol
+        <strong>Tonton Iklan</strong>.
+      </div>
+
+    </div>
+
+    <div class="step">
+
+      <div class="step-number">
+        2
+      </div>
+
+      <div class="step-text">
+        Setelah halaman iklan terbuka,
+        kembali ke halaman ini.
+      </div>
+
+    </div>
+
+    <div class="step">
+
+      <div class="step-number">
+        3
+      </div>
+
+      <div class="step-text">
+        Setelah kembali, tombol
+        <strong>Konfirmasi &amp; Lanjutkan</strong>
+        akan muncul.
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- AREA IKLAN -->
+
+  <section
+    class="ad-section"
+    id="adSection">
+
+    <div class="ad-icon">
+      ▶
+    </div>
+
+    <h2>
+      Tonton Iklan Terlebih Dahulu
+    </h2>
+
+    <p>
+      Klik tombol di bawah untuk membuka
+      halaman iklan.
+    </p>
+
+    <a
+      class="ad-button"
+      id="adButton"
+      href="https://www.profitableratecpmnetwork.com/dzth71h9?key=0d1e630d97de4d34d79e6dd18d6a2fe8"
+      target="_blank"
+      rel="noopener noreferrer">
+
+      ▶ Tonton Iklan
+
+    </a>
+
+  </section>
+
+
+  <!-- KONFIRMASI SETELAH KEMBALI -->
+
+  <section
+    class="confirm-section"
+    id="confirmSection">
+
+    <h2>
+      ✅ Iklan Selesai
+    </h2>
+
+    <p>
+      Jika kamu sudah kembali dari halaman iklan,
+      tekan tombol di bawah untuk melanjutkan
+      ke video.
+    </p>
+
+    <a
+      class="confirm-button"
+      id="confirmButton"
+      href="trending.html">
+
+      ▶ Konfirmasi &amp; Lanjutkan
+
+    </a>
+
+  </section>
+
+
+  <div class="note">
+    Tombol konfirmasi akan muncul setelah kamu
+    kembali dari halaman iklan.
   </div>
 
-  <div class="footer">
-    © 2026 TRENDING • Mobile Friendly
-  </div>
 
-</div>
+  <footer>
+    © 2026 • Video Player
+  </footer>
+
+</main>
 
 
 <script>
 
+(() => {
+
+  "use strict";
+
+
   /*
-  =========================================================
-  HALAMAN TUJUAN
-  =========================================================
+   * ==================================================
+   * PENGATURAN
+   * ==================================================
+   */
 
-  Karena file player kamu bernama:
+  const AD_LINK =
+    "https://www.profitableratecpmnetwork.com/dzth71h9?key=0d1e630d97de4d34d79e6dd18d6a2fe8";
 
-  trending.html
 
-  maka kita langsung arahkan ke:
+  /*
+   * INI ADALAH HALAMAN PLAYER
+   *
+   * BUKAN LINK MP4.
+   *
+   * File landing dan trending.html harus
+   * berada di folder yang sama.
+   */
 
-  trending.html
+  const VIDEO_PAGE =
+    "trending.html";
 
-  =========================================================
-  */
 
-  const VIDEO_PAGE = "trending.html";
-
+  /*
+   * ==================================================
+   * ELEMENT
+   * ==================================================
+   */
 
   const adButton =
     document.getElementById("adButton");
 
-  const confirmArea =
-    document.getElementById("confirmArea");
+  const adSection =
+    document.getElementById("adSection");
 
-  const continueButton =
-    document.getElementById("continueButton");
+  const confirmSection =
+    document.getElementById("confirmSection");
 
-  const status =
-    document.getElementById("status");
-
-  const notice =
-    document.getElementById("notice");
+  const confirmButton =
+    document.getElementById("confirmButton");
 
 
   /*
-  =========================================================
-  STORAGE KEY
-  =========================================================
-  */
+   * ==================================================
+   * STORAGE
+   * ==================================================
+   */
 
-  const STORAGE_KEY =
-    "trending_ad_opened";
-
-
-  /*
-  =========================================================
-  TAMPILKAN KONFIRMASI
-  =========================================================
-  */
-
-  function showConfirmation() {
-
-    confirmArea.style.display = "block";
-
-    notice.innerHTML =
-      "✅ <strong>Iklan sudah dibuka.</strong><br>" +
-      "Sekarang kamu bisa melanjutkan ke video.";
-
-    status.innerHTML =
-      "Silakan klik tombol <b>Konfirmasi & Lanjutkan</b>.";
-
-    adButton.classList.add("btn-disabled");
-
-  }
+  const AD_RETURN_KEY =
+    "trending_ad_return";
 
 
   /*
-  =========================================================
-  KLIK BUKA IKLAN
-  =========================================================
-  */
+   * ==================================================
+   * CEK STATUS
+   * ==================================================
+   */
 
-  adButton.addEventListener("click", function () {
+  function showConfirmation(){
 
-    localStorage.setItem(
-      STORAGE_KEY,
-      "opened"
+    confirmSection.classList.add(
+      "show"
     );
 
-    status.innerHTML =
-      "⏳ Iklan dibuka di tab baru.<br>" +
-      "Setelah selesai, kembali ke halaman ini.";
-
-  });
-
-
-  /*
-  =========================================================
-  CEK APAKAH USER SUDAH KEMBALI
-  =========================================================
-  */
-
-  function checkReturn() {
-
-    const adOpened =
-      localStorage.getItem(STORAGE_KEY);
-
-    if (adOpened === "opened") {
-
-      showConfirmation();
-
-    }
+    adSection.style.display =
+      "none";
 
   }
 
 
   /*
-  CEK SAAT HALAMAN DIBUKA
-  */
+   * ==================================================
+   * KETIKA TOMBOL IKLAN DITEKAN
+   * ==================================================
+   */
 
-  checkReturn();
+  adButton.addEventListener(
+    "click",
+    () => {
+
+      /*
+       * Tandai bahwa user sudah
+       * membuka halaman iklan.
+       */
+
+      localStorage.setItem(
+        AD_RETURN_KEY,
+        String(Date.now())
+      );
+
+    }
+  );
 
 
   /*
-  CEK SAAT KEMBALI KE TAB INI
-  */
+   * ==================================================
+   * CEK KETIKA KEMBALI KE HALAMAN
+   * ==================================================
+   */
+
+  function checkAdReturn(){
+
+    const adOpened =
+      localStorage.getItem(
+        AD_RETURN_KEY
+      );
+
+    if(!adOpened){
+      return;
+    }
+
+
+    /*
+     * User sudah pernah membuka iklan.
+     * Tampilkan tombol konfirmasi.
+     */
+
+    showConfirmation();
+
+  }
+
+
+  /*
+   * ==================================================
+   * VISIBILITY CHANGE
+   * ==================================================
+   */
+
+  document.addEventListener(
+    "visibilitychange",
+    () => {
+
+      if(
+        document.visibilityState ===
+        "visible"
+      ){
+
+        checkAdReturn();
+
+      }
+
+    }
+  );
+
+
+  /*
+   * ==================================================
+   * FOCUS
+   * ==================================================
+   */
 
   window.addEventListener(
     "focus",
-    checkReturn
+    () => {
+
+      checkAdReturn();
+
+    }
   );
 
 
   /*
-  CEK MOBILE BROWSER
-  */
+   * ==================================================
+   * PAGESHOW
+   * ==================================================
+   */
 
   window.addEventListener(
     "pageshow",
-    checkReturn
+    () => {
+
+      checkAdReturn();
+
+    }
   );
 
 
   /*
-  =========================================================
-  KONFIRMASI & LANJUTKAN
-  =========================================================
-  */
+   * ==================================================
+   * KONFIRMASI
+   * ==================================================
+   */
 
-  continueButton.addEventListener(
+  confirmButton.addEventListener(
     "click",
-    function () {
+    () => {
 
       /*
-      Hapus status iklan
-      */
+       * Hapus status agar ketika nanti
+       * membuka landing lagi prosesnya
+       * dimulai dari awal.
+       */
 
       localStorage.removeItem(
-        STORAGE_KEY
+        AD_RETURN_KEY
       );
 
+
       /*
-      LANGSUNG KE trending.html
-      */
+       * ARAHKAN KE:
+       *
+       * trending.html
+       *
+       * BUKAN MP4.
+       */
 
       window.location.href =
         VIDEO_PAGE;
@@ -403,7 +1126,86 @@
     }
   );
 
+
+  /*
+   * ==================================================
+   * INITIAL CHECK
+   * ==================================================
+   */
+
+  checkAdReturn();
+
+
+})();
+
 </script>
+
+
+<!-- Histats -->
+
+<script>
+
+var _Hasync = _Hasync || [];
+
+_Hasync.push([
+  'Histats.start',
+  '1,5043495,4,0,0,0,00010000'
+]);
+
+_Hasync.push([
+  'Histats.fasi',
+  '1'
+]);
+
+_Hasync.push([
+  'Histats.track_hits',
+  ''
+]);
+
+(function(){
+
+  var hs =
+    document.createElement('script');
+
+  hs.type =
+    'text/javascript';
+
+  hs.async =
+    true;
+
+  hs.src =
+    ('https:' ==
+      document.location.protocol
+        ? 'https://'
+        : 'http://'
+    ) +
+    's10.histats.com/js15_as.js';
+
+  (
+    document.getElementsByTagName('head')[0] ||
+    document.getElementsByTagName('body')[0]
+  ).appendChild(hs);
+
+})();
+
+</script>
+
+
+<noscript>
+
+<a
+  href="/"
+  target="_blank"
+  rel="noopener noreferrer">
+
+  <img
+    src="https://sstatic1.histats.com/0.gif?5043495&101"
+    alt="web tracker"
+    border="0">
+
+</a>
+
+</noscript>
 
 </body>
 </html>
