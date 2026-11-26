@@ -8,13 +8,13 @@
 
   <title>▶️ TRENDING - Lanjutkan Video</title>
 
-  <!-- FACEBOOK / SOCIAL MEDIA PREVIEW -->
+  <!-- FACEBOOK PREVIEW -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="▶️ TRENDING - Tonton Video">
   <meta property="og:description" content="Klik untuk melanjutkan dan menonton video.">
-  
+
   <!-- GANTI DENGAN URL GAMBAR KAMU -->
-  <meta property="og:image" content="GANTI-DENGAN-URL-GAMBAR-KAMU">
+  <meta property="og:image" content="https://jpcdn.it/img/de8a8157501ac660988d9ba5fdf3a2fc.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
 
@@ -177,12 +177,7 @@
 
   <div class="card">
 
-    <!--
-      =====================================================
-      GANTI GAMBAR DI BAWAH INI DENGAN GAMBAR KAMU
-      =====================================================
-    -->
-
+    <!-- GANTI URL GAMBAR INI -->
     <img
       class="poster"
       src="GANTI-DENGAN-URL-GAMBAR-KAMU"
@@ -202,10 +197,7 @@
       🔒 Silakan buka iklan terlebih dahulu untuk melanjutkan.
     </div>
 
-    <!-- =================================================
-         TOMBOL IKLAN
-         ================================================= -->
-
+    <!-- TOMBOL IKLAN -->
     <a
       id="adButton"
       class="btn btn-ad"
@@ -216,22 +208,17 @@
       🔥 BUKA IKLAN
     </a>
 
-    <!-- STATUS -->
-
     <div class="status" id="status">
       Setelah membuka iklan, kembali ke halaman ini.
     </div>
 
-    <!-- =================================================
-         KONFIRMASI
-         ================================================= -->
-
+    <!-- KONFIRMASI -->
     <div id="confirmArea">
 
       <a
         id="continueButton"
         class="btn btn-confirm"
-        href="#"
+        href="trending.html"
       >
         ▶️ KONFIRMASI & LANJUTKAN
       </a>
@@ -256,45 +243,52 @@
 
   /*
   =========================================================
-  PENTING
+  HALAMAN TUJUAN
   =========================================================
 
-  GANTI URL DI BAWAH INI DENGAN URL HALAMAN PLAYER KAMU.
+  Karena file player kamu bernama:
 
-  CONTOH:
+  trending.html
 
-  const VIDEO_PAGE =
-  "https://domainkamu.com/trending.html";
+  maka kita langsung arahkan ke:
 
-  JANGAN masukkan URL file video MP4 di sini.
+  trending.html
 
-  Yang dimasukkan adalah URL HALAMAN HTML PLAYER.
   =========================================================
   */
 
-  const VIDEO_PAGE =
-    "https://DOMAIN-KAMU.com/trending.html";
+  const VIDEO_PAGE = "trending.html";
+
+
+  const adButton =
+    document.getElementById("adButton");
+
+  const confirmArea =
+    document.getElementById("confirmArea");
+
+  const continueButton =
+    document.getElementById("continueButton");
+
+  const status =
+    document.getElementById("status");
+
+  const notice =
+    document.getElementById("notice");
 
 
   /*
   =========================================================
-  SISTEM DETEKSI IKLAN
+  STORAGE KEY
   =========================================================
   */
-
-  const adButton = document.getElementById("adButton");
-  const confirmArea = document.getElementById("confirmArea");
-  const continueButton = document.getElementById("continueButton");
-  const status = document.getElementById("status");
-  const notice = document.getElementById("notice");
 
   const STORAGE_KEY =
-    "trending_ad_opened_" + window.location.pathname;
+    "trending_ad_opened";
 
 
   /*
   =========================================================
-  FUNGSI MENAMPILKAN TOMBOL KONFIRMASI
+  TAMPILKAN KONFIRMASI
   =========================================================
   */
 
@@ -316,30 +310,27 @@
 
   /*
   =========================================================
-  SAAT TOMBOL IKLAN DIKLIK
+  KLIK BUKA IKLAN
   =========================================================
   */
 
   adButton.addEventListener("click", function () {
 
-    localStorage.setItem(STORAGE_KEY, "opened");
+    localStorage.setItem(
+      STORAGE_KEY,
+      "opened"
+    );
 
     status.innerHTML =
       "⏳ Iklan dibuka di tab baru.<br>" +
       "Setelah selesai, kembali ke halaman ini.";
-
-    /*
-      Kita tidak langsung menganggap iklan selesai.
-      Tombol konfirmasi akan muncul ketika user kembali
-      ke halaman ini.
-    */
 
   });
 
 
   /*
   =========================================================
-  SAAT USER KEMBALI KE HALAMAN LANDING
+  CEK APAKAH USER SUDAH KEMBALI
   =========================================================
   */
 
@@ -358,77 +349,59 @@
 
 
   /*
-  Jalankan ketika halaman pertama kali dibuka
+  CEK SAAT HALAMAN DIBUKA
   */
 
   checkReturn();
 
 
   /*
-  Jalankan ketika user kembali dari tab iklan
+  CEK SAAT KEMBALI KE TAB INI
   */
 
-  window.addEventListener("focus", function () {
-
-    checkReturn();
-
-  });
+  window.addEventListener(
+    "focus",
+    checkReturn
+  );
 
 
   /*
-  Untuk browser mobile
+  CEK MOBILE BROWSER
   */
 
-  window.addEventListener("pageshow", function () {
-
-    checkReturn();
-
-  });
+  window.addEventListener(
+    "pageshow",
+    checkReturn
+  );
 
 
   /*
   =========================================================
-  TOMBOL LANJUTKAN
+  KONFIRMASI & LANJUTKAN
   =========================================================
   */
 
-  continueButton.addEventListener("click", function (event) {
+  continueButton.addEventListener(
+    "click",
+    function () {
 
-    event.preventDefault();
+      /*
+      Hapus status iklan
+      */
 
-    /*
-      Pastikan URL player sudah benar.
-    */
-
-    if (
-      !VIDEO_PAGE ||
-      VIDEO_PAGE.includes("DOMAIN-KAMU.com")
-    ) {
-
-      alert(
-        "URL halaman video belum diatur. Silakan edit VIDEO_PAGE di dalam HTML."
+      localStorage.removeItem(
+        STORAGE_KEY
       );
 
-      return;
+      /*
+      LANGSUNG KE trending.html
+      */
+
+      window.location.href =
+        VIDEO_PAGE;
 
     }
-
-
-    /*
-      Hapus status supaya kalau user kembali ke landing
-      bisa menjalankan proses lagi jika diperlukan.
-    */
-
-    localStorage.removeItem(STORAGE_KEY);
-
-
-    /*
-      Masuk ke halaman player.
-    */
-
-    window.location.href = VIDEO_PAGE;
-
-  });
+  );
 
 </script>
 
