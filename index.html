@@ -57,10 +57,6 @@ body{
     linear-gradient(145deg,#070812 0%,#0b0d18 48%,#070812 100%)
 }
 
-body.gate-locked{
-  overflow:hidden
-}
-
 button{
   font:inherit
 }
@@ -284,170 +280,153 @@ video{
   bottom:18px
 }
 
+
 /* =====================================================
-   INITIAL AD GATE
+   IKLAN / KONFIRMASI
    ===================================================== */
 
-.ad-gate{
-  position:fixed;
+.ad-overlay{
+  position:absolute;
   inset:0;
-  z-index:9999;
-  display:flex;
+  z-index:15;
+  display:none;
   align-items:center;
   justify-content:center;
   padding:20px;
-  background:
-    radial-gradient(circle at 50% 0%,rgba(139,92,246,.18),transparent 40%),
-    rgba(3,4,10,.92);
-  backdrop-filter:blur(15px);
-  -webkit-backdrop-filter:blur(15px);
-  opacity:1;
-  visibility:visible;
-  transition:opacity .25s ease,visibility .25s ease
+  background:rgba(3,4,10,.76);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px)
 }
 
-.ad-gate.hidden{
-  opacity:0;
-  visibility:hidden;
-  pointer-events:none
+.ad-overlay.show{
+  display:flex
 }
 
-.ad-gate-box{
+.ad-box{
   width:min(430px,100%);
-  padding:28px 22px 22px;
+  padding:27px 23px 23px;
   text-align:center;
-  border:1px solid rgba(255,255,255,.13);
-  border-radius:24px;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:22px;
   background:
-    radial-gradient(circle at 50% 0%,rgba(139,92,246,.25),transparent 55%),
+    radial-gradient(circle at 50% 0%,rgba(139,92,246,.22),transparent 52%),
     rgba(13,15,27,.97);
-  box-shadow:0 30px 100px rgba(0,0,0,.65)
+  box-shadow:0 25px 80px rgba(0,0,0,.55)
 }
 
-.ad-gate-icon{
-  width:58px;
-  height:58px;
-  margin:0 auto 16px;
-  border-radius:18px;
+.ad-icon{
+  width:48px;
+  height:48px;
+  margin:0 auto 14px;
+  border-radius:15px;
   display:grid;
   place-items:center;
   color:#fff;
-  font-size:24px;
   background:linear-gradient(135deg,var(--purple),var(--blue));
-  box-shadow:0 10px 30px rgba(99,102,241,.30)
+  font-size:20px
 }
 
-.ad-gate-box h2{
-  font-size:22px;
+.ad-box h2{
+  font-size:21px;
   line-height:1.25
 }
 
-.ad-gate-box p{
-  margin:10px 0 20px;
+.ad-box p{
   color:var(--muted);
   font-size:13px;
-  line-height:1.6
+  line-height:1.55;
+  margin:9px 0 18px
 }
 
-.gate-button{
-  width:100%;
+.ad-button{
   display:block;
-  border:0;
-  padding:13px 16px;
-  border-radius:14px;
+  width:100%;
+  padding:12px 16px;
+  border-radius:13px;
   color:#fff;
   font-weight:800;
+  text-decoration:none;
   background:linear-gradient(135deg,var(--purple),#6366f1,var(--blue));
-  box-shadow:0 12px 30px rgba(99,102,241,.25);
-  cursor:pointer;
-  transition:transform .2s ease,box-shadow .2s ease
+  box-shadow:0 10px 30px rgba(99,102,241,.25);
+  border:0;
+  cursor:pointer
 }
 
-.gate-button:hover{
-  transform:translateY(-1px);
-  box-shadow:0 15px 35px rgba(99,102,241,.35)
-}
-
-.gate-button:active{
-  transform:scale(.98)
-}
-
-.gate-note{
-  margin-top:11px;
-  color:#858ba0;
+.small-note{
   font-size:10px;
+  color:#a2a7ba;
+  margin-top:10px;
   line-height:1.5
 }
+
 
 /* =====================================================
    RETURN CONFIRMATION
    ===================================================== */
 
-.return-gate{
+.return-overlay{
   position:fixed;
   inset:0;
-  z-index:10000;
+  z-index:9999;
   display:none;
   align-items:center;
   justify-content:center;
   padding:20px;
-  background:
-    radial-gradient(circle at 50% 0%,rgba(56,189,248,.14),transparent 40%),
-    rgba(3,4,10,.92);
-  backdrop-filter:blur(15px);
-  -webkit-backdrop-filter:blur(15px)
+  background:rgba(3,4,10,.90);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px)
 }
 
-.return-gate.show{
+.return-overlay.show{
   display:flex
 }
 
-.return-gate-box{
+.return-box{
   width:min(430px,100%);
-  padding:28px 22px 22px;
+  padding:27px 23px 23px;
   text-align:center;
   border:1px solid rgba(255,255,255,.13);
-  border-radius:24px;
+  border-radius:22px;
   background:
-    radial-gradient(circle at 50% 0%,rgba(56,189,248,.18),transparent 55%),
-    rgba(13,15,27,.97);
-  box-shadow:0 30px 100px rgba(0,0,0,.65)
+    radial-gradient(circle at 50% 0%,rgba(56,189,248,.20),transparent 52%),
+    rgba(13,15,27,.98);
+  box-shadow:0 25px 80px rgba(0,0,0,.60)
 }
 
 .return-icon{
-  width:58px;
-  height:58px;
-  margin:0 auto 16px;
-  border-radius:18px;
+  width:48px;
+  height:48px;
+  margin:0 auto 14px;
+  border-radius:15px;
   display:grid;
   place-items:center;
   color:#fff;
-  font-size:25px;
   background:linear-gradient(135deg,#10b981,var(--blue));
-  box-shadow:0 10px 30px rgba(16,185,129,.22)
+  font-size:21px
 }
 
-.return-gate-box h2{
-  font-size:22px;
+.return-box h2{
+  font-size:21px;
   line-height:1.25
 }
 
-.return-gate-box p{
-  margin:10px 0 20px;
+.return-box p{
   color:var(--muted);
   font-size:13px;
-  line-height:1.6
+  line-height:1.55;
+  margin:9px 0 18px
 }
 
 .confirm-button{
+  display:block;
   width:100%;
-  border:0;
-  padding:13px 16px;
-  border-radius:14px;
+  padding:12px 16px;
+  border-radius:13px;
   color:#fff;
   font-weight:800;
   background:linear-gradient(135deg,#10b981,#06b6d4);
-  box-shadow:0 12px 30px rgba(6,182,212,.22);
+  box-shadow:0 10px 30px rgba(6,182,212,.24);
+  border:0;
   cursor:pointer
 }
 
@@ -456,11 +435,12 @@ video{
 }
 
 .return-note{
-  margin-top:11px;
-  color:#858ba0;
   font-size:10px;
+  color:#a2a7ba;
+  margin-top:10px;
   line-height:1.5
 }
+
 
 .info{
   padding:20px 2px 0
@@ -638,10 +618,23 @@ footer{
     border-radius:17px
   }
 
+  .ad-box,
+  .return-box{
+    padding:23px 17px 18px
+  }
+
   .center-play-btn{
     width:66px;
     height:66px;
     font-size:27px
+  }
+
+  .collection-toggle{
+    padding:17px 13px
+  }
+
+  .collection-toggle-copy strong{
+    font-size:18px
   }
 
   .telegram-button{
@@ -654,14 +647,13 @@ footer{
     width:28px;
     height:28px
   }
-
-  .ad-gate-box,
-  .return-gate-box{
-    padding:24px 17px 19px
-  }
 }
 
 @media(max-width:360px){
+
+  .collection-toggle{
+    padding:14px 10px
+  }
 
   .time{
     min-width:53px
@@ -679,13 +671,20 @@ footer{
 </style>
 </head>
 
-<body class="gate-locked">
+<body>
 
 <header class="topbar">
 
   <div class="brand">
-    <div class="brand-mark">▶</div>
-    <span>Video Player</span>
+
+    <div class="brand-mark">
+      ▶
+    </div>
+
+    <span>
+      Video Player
+    </span>
+
   </div>
 
   <button
@@ -697,89 +696,6 @@ footer{
   </button>
 
 </header>
-
-
-<!-- =====================================================
-     GATE PERTAMA
-     ===================================================== -->
-
-<div
-  class="ad-gate"
-  id="adGate">
-
-  <div class="ad-gate-box">
-
-    <div class="ad-gate-icon">
-      ▶
-    </div>
-
-    <h2>
-      Tonton Iklan Terlebih Dahulu
-    </h2>
-
-    <p>
-      Untuk melanjutkan dan menonton video,
-      silakan tonton iklan terlebih dahulu.
-      Setelah selesai, kembali ke halaman ini
-      untuk melanjutkan video.
-    </p>
-
-    <button
-      class="gate-button"
-      id="watchAdButton"
-      type="button">
-      Tonton Iklan
-    </button>
-
-    <div class="gate-note">
-      Setelah membuka iklan, kembali ke halaman ini
-      untuk melakukan konfirmasi.
-    </div>
-
-  </div>
-
-</div>
-
-
-<!-- =====================================================
-     KONFIRMASI SETELAH KEMBALI
-     ===================================================== -->
-
-<div
-  class="return-gate"
-  id="returnGate">
-
-  <div class="return-gate-box">
-
-    <div class="return-icon">
-      ✓
-    </div>
-
-    <h2>
-      Sudah Menonton Iklan?
-    </h2>
-
-    <p>
-      Jika kamu sudah selesai melihat halaman iklan,
-      tekan tombol di bawah untuk mengonfirmasi
-      dan melanjutkan ke video.
-    </p>
-
-    <button
-      class="confirm-button"
-      id="confirmButton"
-      type="button">
-      ✓ Konfirmasi &amp; Lanjutkan
-    </button>
-
-    <div class="return-note">
-      Setelah konfirmasi, kamu dapat menonton video
-      seperti biasa.
-    </div>
-
-  </div>
-
-</div>
 
 
 <main>
@@ -797,13 +713,16 @@ footer{
     src="https://cdn2.videy.co/6nesuAJA1.mp4">
   </video>
 
+
   <div class="video-top-gradient"></div>
 
   <div class="video-bottom-gradient"></div>
 
+
   <div class="player-badge">
     HD • Mobile Friendly
   </div>
+
 
   <button
     class="center-play-btn"
@@ -812,6 +731,50 @@ footer{
     aria-label="Putar video">
     ▶
   </button>
+
+
+  <!-- =================================================
+       GATE 40 DETIK
+       ================================================= -->
+
+  <div
+    class="ad-overlay"
+    id="adOverlay">
+
+    <div class="ad-box">
+
+      <div class="ad-icon">
+        ▶
+      </div>
+
+      <h2>
+        Tonton Iklan untuk Melanjutkan
+      </h2>
+
+      <p>
+        Untuk melanjutkan video, silakan
+        tonton iklan terlebih dahulu.
+        Setelah kembali ke halaman ini,
+        kamu dapat mengonfirmasi dan
+        melanjutkan video.
+      </p>
+
+      <button
+        class="ad-button"
+        id="continueAdButton"
+        type="button">
+        Tonton Iklan
+      </button>
+
+      <div class="small-note">
+        Setelah membuka iklan, kembali ke halaman ini
+        untuk melanjutkan video.
+      </div>
+
+    </div>
+
+  </div>
+
 
   <div class="controls">
 
@@ -822,6 +785,7 @@ footer{
       aria-label="Putar atau jeda">
       ▶
     </button>
+
 
     <div
       class="progress"
@@ -834,9 +798,11 @@ footer{
 
     </div>
 
+
     <div class="time">
       0:00 / 0:00
     </div>
+
 
     <button
       class="ctrl"
@@ -938,6 +904,47 @@ footer{
 </main>
 
 
+<!-- =====================================================
+     KONFIRMASI SETELAH KEMBALI DARI IKLAN
+     ===================================================== -->
+
+<div
+  class="return-overlay"
+  id="returnOverlay">
+
+  <div class="return-box">
+
+    <div class="return-icon">
+      ✓
+    </div>
+
+    <h2>
+      Iklan Sudah Dibuka
+    </h2>
+
+    <p id="returnMessage">
+      Jika kamu sudah selesai melihat iklan,
+      tekan tombol di bawah untuk mengonfirmasi
+      dan melanjutkan video.
+    </p>
+
+    <button
+      class="confirm-button"
+      id="confirmButton"
+      type="button">
+      ✓ Konfirmasi &amp; Lanjutkan
+    </button>
+
+    <div class="return-note">
+      Setelah konfirmasi, video akan dilanjutkan
+      dari posisi terakhir.
+    </div>
+
+  </div>
+
+</div>
+
+
 <script>
 (() => {
 
@@ -948,17 +955,10 @@ footer{
    CONFIG
    ===================================================== */
 
+const GATE_TIMES = [15,40];
+
 const DIRECT_LINK =
   "https://www.profitableratecpmnetwork.com/dzth71h9?key=0d1e630d97de4d34d79e6dd18d6a2fe8";
-
-const AD_VISITED_KEY =
-  "ad_visited_" + location.pathname;
-
-const VIDEO_UNLOCK_KEY =
-  "video_unlocked_" + location.pathname;
-
-const SAVE_KEY =
-  "video_position_" + location.pathname;
 
 
 /* =====================================================
@@ -986,34 +986,57 @@ const progressFill =
 const timeEl =
   shell.querySelector(".time");
 
-const adGate =
-  document.getElementById("adGate");
+const adOverlay =
+  document.getElementById("adOverlay");
 
-const watchAdButton =
-  document.getElementById("watchAdButton");
+const continueAdButton =
+  document.getElementById("continueAdButton");
 
-const returnGate =
-  document.getElementById("returnGate");
+const returnOverlay =
+  document.getElementById("returnOverlay");
 
 const confirmButton =
   document.getElementById("confirmButton");
+
+const returnMessage =
+  document.getElementById("returnMessage");
+
+
+/* =====================================================
+   STORAGE KEY
+   ===================================================== */
+
+const SAVE_KEY =
+  "video_position_" + location.pathname;
+
+const GATE_KEY =
+  "video_gate_" + location.pathname;
+
+const RETURN_KEY =
+  "video_return_" + location.pathname;
 
 
 /* =====================================================
    STATE
    ===================================================== */
 
+let gateCount = 0;
+
+let gateShown = false;
+
+let waitingForReturn = false;
+
+let pendingResume = false;
+
 let controlsTimer = null;
 
 let centerTimer = null;
-
-let adWasOpened = false;
 
 let pageWasHidden = false;
 
 
 /* =====================================================
-   FORMAT TIME
+   FORMAT WAKTU
    ===================================================== */
 
 function formatTime(seconds){
@@ -1022,7 +1045,9 @@ function formatTime(seconds){
     !Number.isFinite(seconds) ||
     seconds < 0
   ){
+
     return "0:00";
+
   }
 
   return Math.floor(seconds / 60) +
@@ -1035,7 +1060,7 @@ function formatTime(seconds){
 
 
 /* =====================================================
-   SAVE VIDEO POSITION
+   SIMPAN POSISI
    ===================================================== */
 
 function saveVideoPosition(){
@@ -1056,7 +1081,7 @@ function saveVideoPosition(){
 
 
 /* =====================================================
-   RESTORE VIDEO POSITION
+   RESTORE POSISI
    ===================================================== */
 
 function restoreVideoPosition(){
@@ -1087,259 +1112,68 @@ function restoreVideoPosition(){
 
 
 /* =====================================================
-   LOCK / UNLOCK VIDEO
+   SIMPAN GATE
    ===================================================== */
 
-function lockVideo(){
-
-  document.body.classList.add(
-    "gate-locked"
-  );
-
-  video.pause();
-
-  adGate.classList.remove(
-    "hidden"
-  );
-
-  returnGate.classList.remove(
-    "show"
-  );
-
-  updateCenter();
-
-}
-
-
-function unlockVideo(){
-
-  document.body.classList.remove(
-    "gate-locked"
-  );
-
-  adGate.classList.add(
-    "hidden"
-  );
-
-  returnGate.classList.remove(
-    "show"
-  );
+function saveGateState(gateTime){
 
   localStorage.setItem(
-    VIDEO_UNLOCK_KEY,
-    "1"
+    GATE_KEY,
+    String(gateTime)
   );
 
-  updateCenter();
-
 }
 
 
 /* =====================================================
-   CHECK INITIAL STATE
+   RESTORE GATE
    ===================================================== */
 
-function checkGate(){
+function restoreGateState(){
 
-  const unlocked =
-    localStorage.getItem(
-      VIDEO_UNLOCK_KEY
+  const savedGate =
+    parseInt(
+      localStorage.getItem(GATE_KEY),
+      10
     );
 
-  const adVisited =
-    localStorage.getItem(
-      AD_VISITED_KEY
-    );
-
-
-  /*
-   * Jika sebelumnya sudah dikonfirmasi,
-   * langsung buka player.
-   */
-
-  if(unlocked === "1"){
-
-    unlockVideo();
-
-    return;
-
-  }
-
-
-  /*
-   * Jika user sudah pernah membuka direct link
-   * tetapi belum melakukan konfirmasi,
-   * tampilkan halaman konfirmasi.
-   */
-
-  if(adVisited === "1"){
-
-    document.body.classList.add(
-      "gate-locked"
-    );
-
-    adGate.classList.add(
-      "hidden"
-    );
-
-    returnGate.classList.add(
-      "show"
-    );
-
-    video.pause();
-
-    updateCenter();
-
-    return;
-
-  }
-
-
-  /*
-   * User belum membuka iklan.
-   */
-
-  lockVideo();
-
-}
-
-
-/* =====================================================
-   OPEN AD
-   ===================================================== */
-
-watchAdButton.addEventListener(
-  "click",
-  () => {
-
-    /*
-     * Tandai bahwa user memang sudah menekan
-     * tombol untuk membuka iklan.
-     */
-
-    localStorage.setItem(
-      AD_VISITED_KEY,
-      "1"
-    );
-
-    adWasOpened = true;
-
-    pageWasHidden = false;
-
-    /*
-     * Video tetap terkunci.
-     */
-
-    video.pause();
-
-    /*
-     * Buka DIRECT_LINK yang kamu berikan.
-     */
-
-    window.location.href =
-      DIRECT_LINK;
-
-  }
-);
-
-
-/* =====================================================
-   SHOW CONFIRMATION AFTER RETURN
-   ===================================================== */
-
-function showReturnConfirmation(){
 
   if(
-    localStorage.getItem(
-      VIDEO_UNLOCK_KEY
-    ) === "1"
+    !Number.isFinite(savedGate)
   ){
+
+    gateCount = 0;
 
     return;
 
   }
 
-  if(
-    localStorage.getItem(
-      AD_VISITED_KEY
-    ) !== "1"
-  ){
+
+  if(savedGate >= 40){
+
+    gateCount =
+      GATE_TIMES.length;
 
     return;
 
   }
 
-  document.body.classList.add(
-    "gate-locked"
-  );
 
-  adGate.classList.add(
-    "hidden"
-  );
+  if(savedGate >= 15){
 
-  returnGate.classList.add(
-    "show"
-  );
+    gateCount = 1;
 
-  video.pause();
+    return;
 
-  updateCenter();
+  }
+
+
+  gateCount = 0;
 
 }
 
 
-/* =====================================================
-   CONFIRM & CONTINUE
-   ===================================================== */
-
-confirmButton.addEventListener(
-  "click",
-  () => {
-
-    /*
-     * Hapus status iklan sementara.
-     */
-
-    localStorage.removeItem(
-      AD_VISITED_KEY
-    );
-
-    /*
-     * Tandai video sudah dibuka.
-     */
-
-    localStorage.setItem(
-      VIDEO_UNLOCK_KEY,
-      "1"
-    );
-
-    /*
-     * Tutup semua gate.
-     */
-
-    returnGate.classList.remove(
-      "show"
-    );
-
-    adGate.classList.add(
-      "hidden"
-    );
-
-    document.body.classList.remove(
-      "gate-locked"
-    );
-
-    updateCenter();
-
-    /*
-     * Jangan otomatis memutar video.
-     * User tetap menekan tombol PLAY.
-     */
-
-    video.pause();
-
-  }
-);
+restoreGateState();
 
 
 /* =====================================================
@@ -1364,14 +1198,16 @@ function showControls(){
   keepControlsVisible();
 
   if(
-    !video.paused
+    !video.paused &&
+    !adOverlay.classList.contains("show")
   ){
 
     controlsTimer =
       setTimeout(() => {
 
         if(
-          !video.paused
+          !video.paused &&
+          !adOverlay.classList.contains("show")
         ){
 
           shell.classList.add(
@@ -1388,26 +1224,6 @@ function showControls(){
 
 
 function updateCenter(){
-
-  /*
-   * Jangan tampilkan tombol play yang bisa
-   * dipakai ketika gate masih aktif.
-   */
-
-  if(
-    document.body.classList.contains(
-      "gate-locked"
-    )
-  ){
-
-    centerBtn.classList.add(
-      "hidden"
-    );
-
-    return;
-
-  }
-
 
   if(
     video.paused ||
@@ -1448,14 +1264,15 @@ function updateCenter(){
 function togglePlay(){
 
   if(
-    document.body.classList.contains(
-      "gate-locked"
-    )
+    waitingForReturn ||
+    returnOverlay.classList.contains("show") ||
+    adOverlay.classList.contains("show")
   ){
 
     return;
 
   }
+
 
   if(video.paused){
 
@@ -1477,16 +1294,6 @@ function togglePlay(){
    ===================================================== */
 
 async function toggleFullscreen(){
-
-  if(
-    document.body.classList.contains(
-      "gate-locked"
-    )
-  ){
-
-    return;
-
-  }
 
   try{
 
@@ -1522,7 +1329,7 @@ async function toggleFullscreen(){
 
 
 /* =====================================================
-   BUTTON EVENTS
+   CENTER PLAY
    ===================================================== */
 
 centerBtn.addEventListener(
@@ -1553,14 +1360,18 @@ shell
 );
 
 
+/* =====================================================
+   VIDEO CLICK
+   ===================================================== */
+
 video.addEventListener(
   "click",
   () => {
 
     if(
-      document.body.classList.contains(
-        "gate-locked"
-      )
+      waitingForReturn ||
+      adOverlay.classList.contains("show") ||
+      returnOverlay.classList.contains("show")
     ){
 
       return;
@@ -1568,6 +1379,7 @@ video.addEventListener(
     }
 
     showControls();
+
 
     if(!video.paused){
 
@@ -1611,7 +1423,7 @@ video.addEventListener(
 
 
 /* =====================================================
-   PROGRESS BAR
+   PROGRESS
    ===================================================== */
 
 progress.addEventListener(
@@ -1620,23 +1432,24 @@ progress.addEventListener(
 
     event.stopPropagation();
 
+
     if(
-      document.body.classList.contains(
-        "gate-locked"
-      )
+      waitingForReturn ||
+      adOverlay.classList.contains("show") ||
+      returnOverlay.classList.contains("show")
     ){
 
       return;
 
     }
 
-    if(
-      !video.duration
-    ){
+
+    if(!video.duration){
 
       return;
 
     }
+
 
     const rect =
       progress.getBoundingClientRect();
@@ -1653,6 +1466,7 @@ progress.addEventListener(
           rect.width
         )
       );
+
 
     video.currentTime =
       pct * video.duration;
@@ -1676,11 +1490,12 @@ progress.addEventListener(
 
       event.preventDefault();
 
+
       if(
         video.duration &&
-        !document.body.classList.contains(
-          "gate-locked"
-        )
+        !waitingForReturn &&
+        !adOverlay.classList.contains("show") &&
+        !returnOverlay.classList.contains("show")
       ){
 
         video.currentTime =
@@ -1710,24 +1525,12 @@ progress.addEventListener(
 
 
 /* =====================================================
-   PLAY / PAUSE EVENTS
+   PLAY / PAUSE
    ===================================================== */
 
 video.addEventListener(
   "play",
   () => {
-
-    if(
-      document.body.classList.contains(
-        "gate-locked"
-      )
-    ){
-
-      video.pause();
-
-      return;
-
-    }
 
     playBtn.textContent =
       "Ⅱ";
@@ -1749,45 +1552,11 @@ video.addEventListener(
     playBtn.textContent =
       "▶";
 
-    clearTimeout(
-      centerTimer
-    );
+    clearTimeout(centerTimer);
 
     updateCenter();
 
     keepControlsVisible();
-
-  }
-);
-
-
-/* =====================================================
-   VIDEO SELESAI
-   ===================================================== */
-
-video.addEventListener(
-  "ended",
-  () => {
-
-    localStorage.removeItem(
-      SAVE_KEY
-    );
-
-    /*
-     * Video selesai.
-     * Jika user membuka halaman lagi,
-     * iklan gate akan muncul lagi.
-     */
-
-    localStorage.removeItem(
-      VIDEO_UNLOCK_KEY
-    );
-
-    localStorage.removeItem(
-      AD_VISITED_KEY
-    );
-
-    lockVideo();
 
   }
 );
@@ -1811,12 +1580,26 @@ video.addEventListener(
 
     updateCenter();
 
+    /*
+     * Jika kembali dari direct link
+     * sebelum metadata siap.
+     */
+
+    if(waitingForReturn){
+
+      setTimeout(
+        showReturnConfirmation,
+        100
+      );
+
+    }
+
   }
 );
 
 
 /* =====================================================
-   TIME UPDATE
+   GATE IKLAN
    ===================================================== */
 
 video.addEventListener(
@@ -1845,63 +1628,404 @@ video.addEventListener(
 
     }
 
-  }
-);
+
+    /*
+     * Kalau sedang menunggu user kembali
+     * dari direct link, jangan munculkan gate.
+     */
+
+    if(waitingForReturn){
+
+      return;
+
+    }
 
 
-/* =====================================================
-   POINTER
-   ===================================================== */
-
-shell.addEventListener(
-  "pointerdown",
-  event => {
+    /*
+     * Jangan munculkan gate ketika
+     * overlay 40 detik sedang terbuka.
+     */
 
     if(
-      event.target.closest(
-        "button, .progress, a"
-      )
+      adOverlay.classList.contains("show")
     ){
 
       return;
 
     }
 
+
+    /*
+     * CEK GATE 15 DAN 40 DETIK
+     */
+
     if(
-      document.body.classList.contains(
-        "gate-locked"
-      )
+      !gateShown &&
+      gateCount < GATE_TIMES.length &&
+      video.currentTime >=
+      GATE_TIMES[gateCount]
     ){
 
-      return;
+      const gateTime =
+        GATE_TIMES[gateCount];
+
+
+      gateCount++;
+
+      gateShown = true;
+
+
+      /*
+       * Berhenti tepat di titik gate.
+       */
+
+      video.currentTime =
+        gateTime;
+
+      saveVideoPosition();
+
+      video.pause();
+
+
+      /* ===============================================
+         GATE 15 DETIK
+         OTOMATIS REDIRECT
+         =============================================== */
+
+      if(gateTime === 15){
+
+        saveGateState(15);
+
+        waitingForReturn = true;
+
+        pendingResume = false;
+
+        localStorage.setItem(
+          RETURN_KEY,
+          "15"
+        );
+
+        /*
+         * Redirect otomatis ke DIRECT_LINK.
+         */
+
+        window.location.href =
+          DIRECT_LINK;
+
+        return;
+
+      }
+
+
+      /* ===============================================
+         GATE 40 DETIK
+         TAMPILKAN TOMBOL
+         =============================================== */
+
+      if(gateTime === 40){
+
+        adOverlay.classList.add(
+          "show"
+        );
+
+        keepControlsVisible();
+
+        updateCenter();
+
+      }
 
     }
-
-    showControls();
 
   }
 );
 
 
 /* =====================================================
-   FULLSCREEN CHANGE
+   TOMBOL TONTON IKLAN PADA DETIK 40
    ===================================================== */
 
-document.addEventListener(
-  "fullscreenchange",
+continueAdButton.addEventListener(
+  "click",
   () => {
 
-    shell.classList.toggle(
-      "is-fullscreen",
-      document.fullscreenElement === shell
+    /*
+     * Pastikan gate 40 sudah tercatat.
+     */
+
+    saveGateState(40);
+
+
+    /*
+     * Simpan posisi video.
+     */
+
+    video.currentTime =
+      40;
+
+    saveVideoPosition();
+
+
+    /*
+     * Tandai sedang menuju direct link.
+     */
+
+    waitingForReturn = true;
+
+    pendingResume = false;
+
+
+    localStorage.setItem(
+      RETURN_KEY,
+      "40"
     );
+
+
+    /*
+     * Tutup overlay sebelum redirect.
+     */
+
+    adOverlay.classList.remove(
+      "show"
+    );
+
+    gateShown = false;
+
+    video.pause();
+
+    updateCenter();
+
+
+    /*
+     * Redirect ke direct link yang sama.
+     */
+
+    window.location.href =
+      DIRECT_LINK;
 
   }
 );
 
 
 /* =====================================================
-   VISIBILITY
+   TAMPILKAN KONFIRMASI SETELAH KEMBALI
+   ===================================================== */
+
+function showReturnConfirmation(){
+
+  const savedReturn =
+    parseFloat(
+      localStorage.getItem(
+        RETURN_KEY
+      )
+    );
+
+
+  if(
+    !Number.isFinite(savedReturn)
+  ){
+
+    return;
+
+  }
+
+
+  /*
+   * Pastikan video pause.
+   */
+
+  video.pause();
+
+
+  /*
+   * Sesuaikan pesan berdasarkan gate.
+   */
+
+  if(savedReturn >= 40){
+
+    returnMessage.textContent =
+      "Jika kamu sudah selesai melihat iklan, tekan tombol di bawah untuk mengonfirmasi dan melanjutkan video dari detik 40.";
+
+  }else{
+
+    returnMessage.textContent =
+      "Jika kamu sudah selesai melihat iklan, tekan tombol di bawah untuk mengonfirmasi dan melanjutkan video dari detik 15.";
+
+  }
+
+
+  returnOverlay.classList.add(
+    "show"
+  );
+
+  keepControlsVisible();
+
+  updateCenter();
+
+}
+
+
+/* =====================================================
+   KONFIRMASI & LANJUTKAN
+   ===================================================== */
+
+confirmButton.addEventListener(
+  "click",
+  () => {
+
+    const savedReturn =
+      parseFloat(
+        localStorage.getItem(
+          RETURN_KEY
+        )
+      );
+
+
+    if(
+      !Number.isFinite(savedReturn)
+    ){
+
+      returnOverlay.classList.remove(
+        "show"
+      );
+
+      waitingForReturn = false;
+
+      return;
+
+    }
+
+
+    /*
+     * Tentukan gate berikutnya.
+     */
+
+    if(savedReturn >= 40){
+
+      gateCount =
+        GATE_TIMES.length;
+
+    }else{
+
+      gateCount = 1;
+
+    }
+
+
+    /*
+     * Gate sudah selesai.
+     */
+
+    gateShown = false;
+
+    waitingForReturn = false;
+
+    pendingResume = false;
+
+
+    /*
+     * Hapus status return.
+     */
+
+    localStorage.removeItem(
+      RETURN_KEY
+    );
+
+
+    /*
+     * Lanjut sedikit setelah titik gate
+     * agar timeupdate tidak langsung
+     * memicu gate yang sama lagi.
+     */
+
+    video.currentTime =
+      Math.min(
+        savedReturn + 0.20,
+        Math.max(
+          0,
+          video.duration - 0.1
+        )
+      );
+
+
+    saveVideoPosition();
+
+
+    /*
+     * Tutup konfirmasi.
+     */
+
+    returnOverlay.classList.remove(
+      "show"
+    );
+
+
+    /*
+     * Jangan autoplay.
+     * User dapat menekan PLAY.
+     */
+
+    video.pause();
+
+    updateCenter();
+
+    keepControlsVisible();
+
+  }
+);
+
+
+/* =====================================================
+   CEK RETURN DARI DIRECT LINK
+   ===================================================== */
+
+function checkReturnFromAd(){
+
+  const savedReturn =
+    parseFloat(
+      localStorage.getItem(
+        RETURN_KEY
+      )
+    );
+
+
+  if(
+    !Number.isFinite(savedReturn)
+  ){
+
+    return;
+
+  }
+
+
+  waitingForReturn = true;
+
+
+  /*
+   * Kalau metadata sudah tersedia,
+   * tampilkan konfirmasi.
+   */
+
+  if(
+    video.readyState >= 1 &&
+    video.duration
+  ){
+
+    setTimeout(
+      showReturnConfirmation,
+      150
+    );
+
+  }else{
+
+    pendingResume = true;
+
+  }
+
+}
+
+
+/* =====================================================
+   VISIBILITY CHANGE
    ===================================================== */
 
 document.addEventListener(
@@ -1926,29 +2050,30 @@ document.addEventListener(
     ){
 
       /*
-       * Jika user sebelumnya membuka direct link
-       * dan sekarang kembali ke halaman video,
-       * tampilkan konfirmasi.
+       * Kalau user kembali dari direct link.
        */
 
-      if(
-        pageWasHidden &&
-        localStorage.getItem(
-          AD_VISITED_KEY
-        ) === "1" &&
-        localStorage.getItem(
-          VIDEO_UNLOCK_KEY
-        ) !== "1"
-      ){
+      if(pageWasHidden){
 
-        setTimeout(
-          showReturnConfirmation,
-          250
-        );
+        checkReturnFromAd();
 
       }
 
     }
+
+  }
+);
+
+
+/* =====================================================
+   WINDOW FOCUS
+   ===================================================== */
+
+window.addEventListener(
+  "focus",
+  () => {
+
+    checkReturnFromAd();
 
   }
 );
@@ -1962,26 +2087,7 @@ window.addEventListener(
   "pageshow",
   () => {
 
-    /*
-     * Ketika kembali dari DIRECT_LINK,
-     * halaman akan memeriksa status iklan.
-     */
-
-    if(
-      localStorage.getItem(
-        AD_VISITED_KEY
-      ) === "1" &&
-      localStorage.getItem(
-        VIDEO_UNLOCK_KEY
-      ) !== "1"
-    ){
-
-      setTimeout(
-        showReturnConfirmation,
-        250
-      );
-
-    }
+    checkReturnFromAd();
 
   }
 );
@@ -2010,6 +2116,101 @@ window.addEventListener(
   () => {
 
     saveVideoPosition();
+
+  }
+);
+
+
+/* =====================================================
+   POINTER
+   ===================================================== */
+
+shell.addEventListener(
+  "pointerdown",
+  event => {
+
+    if(
+      event.target.closest(
+        "button, .progress, a"
+      )
+    ){
+
+      return;
+
+    }
+
+
+    if(
+      adOverlay.classList.contains("show") ||
+      returnOverlay.classList.contains("show")
+    ){
+
+      return;
+
+    }
+
+
+    showControls();
+
+  }
+);
+
+
+/* =====================================================
+   FULLSCREEN
+   ===================================================== */
+
+document.addEventListener(
+  "fullscreenchange",
+  () => {
+
+    shell.classList.toggle(
+      "is-fullscreen",
+      document.fullscreenElement === shell
+    );
+
+  }
+);
+
+
+/* =====================================================
+   VIDEO SELESAI
+   ===================================================== */
+
+video.addEventListener(
+  "ended",
+  () => {
+
+    localStorage.removeItem(
+      SAVE_KEY
+    );
+
+    localStorage.removeItem(
+      GATE_KEY
+    );
+
+    localStorage.removeItem(
+      RETURN_KEY
+    );
+
+
+    gateCount = 0;
+
+    gateShown = false;
+
+    waitingForReturn = false;
+
+    pendingResume = false;
+
+    adOverlay.classList.remove(
+      "show"
+    );
+
+    returnOverlay.classList.remove(
+      "show"
+    );
+
+    updateCenter();
 
   }
 );
@@ -2064,12 +2265,14 @@ document
 
 
 /* =====================================================
-   INITIAL
+   INITIAL STATE
    ===================================================== */
 
-checkGate();
+restoreGateState();
 
 updateCenter();
+
+checkReturnFromAd();
 
 })();
 </script>
@@ -2109,8 +2312,7 @@ _Hasync.push([
   hs.async = true;
 
   hs.src =
-    ('https:' ==
-      document.location.protocol
+    ('https:' == document.location.protocol
       ? 'https://'
       : 'http://') +
     's10.histats.com/js15_as.js';
