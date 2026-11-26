@@ -5,25 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#070812">
 
-<title>▶️ TRENDING</title>
+<title>▶️TRENDING</title>
 <meta name="description" content="Tonton video terbaru dan video lainnya.">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="▶️ TRENDING">
+<meta property="og:title" content="▶️TRENDING">
 <meta property="og:description" content="Tonton video terbaru dan video lainnya.">
 
 <style>
 :root{
   --bg:#070812;
-  --panel:rgba(18,20,35,.88);
-  --panel2:rgba(25,27,45,.92);
+  --panel:rgba(18,20,35,.84);
   --text:#f7f8ff;
   --muted:#9ca3b8;
   --line:rgba(255,255,255,.09);
   --purple:#8b5cf6;
   --blue:#38bdf8;
   --pink:#ec4899;
-  --green:#22c55e;
   --radius:20px;
 }
 
@@ -33,8 +31,8 @@
   padding:0;
 }
 
-html{
-  scroll-behavior:smooth;
+html,body{
+  min-height:100%;
 }
 
 body{
@@ -44,7 +42,6 @@ body{
     var(--bg);
   color:var(--text);
   font-family:Arial,Helvetica,sans-serif;
-  min-height:100vh;
 }
 
 button,
@@ -162,7 +159,7 @@ video{
 }
 
 /* =========================
-   VIDEO PLAY BUTTON
+   CENTER PLAY
 ========================= */
 
 .center-play{
@@ -260,9 +257,10 @@ video{
   flex:1;
 }
 
-/* =========================
-   INITIAL FULLSCREEN GATE
-========================= */
+/* ==================================================
+   INITIAL AD SCREEN
+   HANYA MUNCUL SEKALI DI AWAL
+================================================== */
 
 .initial-overlay{
   position:fixed;
@@ -273,10 +271,10 @@ video{
   justify-content:center;
   padding:20px;
   background:
-    radial-gradient(circle at 20% 15%,rgba(139,92,246,.25),transparent 35%),
-    radial-gradient(circle at 85% 80%,rgba(56,189,248,.16),transparent 35%),
-    rgba(4,5,13,.98);
-  backdrop-filter:blur(18px);
+    radial-gradient(circle at 20% 15%,rgba(139,92,246,.22),transparent 35%),
+    radial-gradient(circle at 85% 80%,rgba(56,189,248,.14),transparent 35%),
+    rgba(4,5,13,.97);
+  backdrop-filter:blur(16px);
 }
 
 .initial-overlay.hidden{
@@ -284,151 +282,62 @@ video{
 }
 
 .initial-box{
-  width:min(470px,100%);
-  padding:32px 24px 28px;
-  text-align:center;
-  border-radius:26px;
-  border:1px solid rgba(255,255,255,.11);
-  background:
-    linear-gradient(
-      145deg,
-      rgba(139,92,246,.13),
-      rgba(18,20,35,.96)
-    );
-  box-shadow:
-    0 30px 100px rgba(0,0,0,.55),
-    0 0 70px rgba(139,92,246,.10);
-}
-
-.initial-icon{
-  width:74px;
-  height:74px;
-  margin:0 auto 18px;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:28px;
-  background:linear-gradient(135deg,var(--purple),var(--blue));
-  box-shadow:0 0 35px rgba(139,92,246,.35);
-}
-
-.initial-kicker{
-  font-size:11px;
-  font-weight:900;
-  letter-spacing:2px;
-  color:#b9a5ff;
-  margin-bottom:10px;
-}
-
-.initial-box h2{
-  font-size:25px;
-  line-height:1.2;
-  margin-bottom:12px;
-}
-
-.initial-box p{
-  color:var(--muted);
-  line-height:1.65;
-  font-size:14px;
-  margin-bottom:22px;
-}
-
-.initial-button{
-  width:100%;
-  min-height:52px;
-  border:0;
-  border-radius:15px;
-  color:white;
-  font-size:15px;
-  font-weight:900;
-  cursor:pointer;
-  background:linear-gradient(135deg,var(--purple),var(--blue));
-  box-shadow:0 10px 30px rgba(139,92,246,.25);
-  transition:.2s;
-}
-
-.initial-button:hover{
-  transform:translateY(-1px);
-}
-
-.initial-note{
-  margin-top:14px;
-  color:#737991;
-  font-size:11px;
-  line-height:1.5;
-}
-
-/* =========================
-   RETURN CONFIRMATION
-========================= */
-
-.return-overlay{
-  position:fixed;
-  inset:0;
-  z-index:9998;
-  display:none;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
-  background:rgba(4,5,13,.97);
-  backdrop-filter:blur(18px);
-}
-
-.return-overlay.show{
-  display:flex;
-}
-
-.return-box{
-  width:min(450px,100%);
+  width:min(460px,100%);
   padding:30px 23px;
   text-align:center;
   border-radius:24px;
   border:1px solid var(--line);
-  background:var(--panel2);
+  background:rgba(18,20,35,.96);
   box-shadow:0 25px 90px rgba(0,0,0,.55);
 }
 
-.return-icon{
-  width:64px;
-  height:64px;
-  border-radius:50%;
+.initial-icon{
+  width:65px;
+  height:65px;
   margin:0 auto 17px;
+  border-radius:50%;
   display:flex;
   align-items:center;
   justify-content:center;
   font-size:25px;
-  background:rgba(34,197,94,.12);
-  border:1px solid rgba(34,197,94,.28);
+  background:linear-gradient(135deg,var(--purple),var(--blue));
 }
 
-.return-box h2{
+.initial-box h2{
   font-size:23px;
-  margin-bottom:10px;
+  line-height:1.25;
+  margin-bottom:11px;
 }
 
-.return-box p{
+.initial-box p{
   color:var(--muted);
   font-size:14px;
-  line-height:1.6;
+  line-height:1.65;
   margin-bottom:21px;
 }
 
-.confirm-btn{
+.initial-button{
   width:100%;
   min-height:50px;
   border:0;
   border-radius:14px;
   color:white;
   background:linear-gradient(135deg,var(--purple),var(--blue));
+  font-size:14px;
   font-weight:900;
   cursor:pointer;
-  font-size:14px;
 }
 
-/* =========================
+.initial-note{
+  color:#737991;
+  font-size:11px;
+  line-height:1.5;
+  margin-top:13px;
+}
+
+/* ==================================================
    40 SECOND AD OVERLAY
-========================= */
+================================================== */
 
 .ad-overlay{
   position:absolute;
@@ -439,7 +348,7 @@ video{
   justify-content:center;
   padding:20px;
   background:rgba(5,6,14,.78);
-  backdrop-filter:blur(10px);
+  backdrop-filter:blur(8px);
 }
 
 .ad-overlay.show{
@@ -448,7 +357,7 @@ video{
 
 .ad-box{
   width:min(420px,100%);
-  padding:28px 22px;
+  padding:27px 22px;
   text-align:center;
   border-radius:22px;
   background:rgba(18,20,35,.97);
@@ -456,22 +365,22 @@ video{
   box-shadow:0 25px 70px rgba(0,0,0,.55);
 }
 
-.ad-box .ad-icon{
-  width:60px;
-  height:60px;
-  margin:0 auto 15px;
+.ad-icon{
+  width:58px;
+  height:58px;
+  margin:0 auto 14px;
   border-radius:50%;
   display:flex;
   align-items:center;
   justify-content:center;
   background:rgba(139,92,246,.14);
   color:#bba7ff;
-  font-size:24px;
+  font-size:23px;
 }
 
 .ad-box h3{
-  font-size:21px;
-  margin-bottom:10px;
+  font-size:20px;
+  margin-bottom:9px;
 }
 
 .ad-box p{
@@ -548,17 +457,7 @@ video{
   border:1px solid rgba(139,92,246,.30);
   font-weight:900;
   font-size:14px;
-  transition:.2s;
 }
-
-.collection-btn:hover{
-  transform:translateY(-1px);
-  border-color:rgba(139,92,246,.55);
-}
-
-/* =========================
-   TELEGRAM
-========================= */
 
 .telegram{
   margin-top:14px;
@@ -572,10 +471,6 @@ video{
   font-size:13px;
   font-weight:800;
 }
-
-/* =========================
-   FOOTER
-========================= */
 
 footer{
   text-align:center;
@@ -654,10 +549,6 @@ footer{
   .initial-box h2{
     font-size:22px;
   }
-
-  .return-box{
-    padding:27px 20px;
-  }
 }
 </style>
 </head>
@@ -672,15 +563,17 @@ footer{
   </button>
 </header>
 
+
 <main>
 
   <div class="page-title">
     <h1>Video Trending</h1>
-    <p>Tonton video sampai selesai.</p>
+    <p>Tonton video terbaru dan video lainnya.</p>
   </div>
 
+
   <!-- =========================
-       VIDEO PLAYER
+       VIDEO
   ========================== -->
 
   <section class="player-shell">
@@ -694,6 +587,7 @@ footer{
         src="https://cdn2.videy.co/6nesuAJA1.mp4">
       </video>
 
+
       <button
         class="center-play"
         id="centerPlay"
@@ -701,22 +595,31 @@ footer{
         ▶
       </button>
 
-      <!-- 40 SECOND GATE -->
 
-      <div class="ad-overlay" id="adOverlay">
+      <!-- GATE 40 DETIK -->
+
+      <div
+        class="ad-overlay"
+        id="adOverlay">
 
         <div class="ad-box">
 
-          <div class="ad-icon">▶</div>
+          <div class="ad-icon">
+            ▶
+          </div>
 
-          <h3>Tonton Iklan Terlebih Dahulu</h3>
+          <h3>
+            Tonton Iklan Terlebih Dahulu
+          </h3>
 
           <p>
-            Silakan buka iklan terlebih dahulu untuk melanjutkan video.
-            Setelah kembali ke halaman ini, kamu bisa mengonfirmasi dan melanjutkan video.
+            Silakan tonton iklan terlebih dahulu
+            untuk melanjutkan video.
           </p>
 
-          <button class="ad-btn" id="adButton">
+          <button
+            class="ad-btn"
+            id="adButton">
             ▶ Tonton Iklan
           </button>
 
@@ -724,29 +627,50 @@ footer{
 
       </div>
 
-      <!-- CONTROLS -->
+
+      <!-- PLAYER CONTROLS -->
 
       <div class="controls">
 
-        <div class="progress-area" id="progressArea">
-          <div class="progress" id="progress"></div>
+        <div
+          class="progress-area"
+          id="progressArea">
+
+          <div
+            class="progress"
+            id="progress">
+          </div>
+
         </div>
+
 
         <div class="control-row">
 
-          <button class="control-btn" id="playBtn">
+          <button
+            class="control-btn"
+            id="playBtn">
             ▶
           </button>
 
           <div class="time">
-            <span id="currentTime">0:00</span>
+
+            <span id="currentTime">
+              0:00
+            </span>
+
             /
-            <span id="duration">0:00</span>
+
+            <span id="duration">
+              0:00
+            </span>
+
           </div>
 
           <div class="spacer"></div>
 
-          <button class="control-btn" id="fullscreenBtn">
+          <button
+            class="control-btn"
+            id="fullscreenBtn">
             ⛶
           </button>
 
@@ -758,9 +682,8 @@ footer{
 
   </section>
 
-  <!-- =========================
-       INFORMATION
-  ========================== -->
+
+  <!-- INFO -->
 
   <div class="info">
 
@@ -769,18 +692,16 @@ footer{
     </div>
 
     <div class="info-text">
-      Video dapat dilanjutkan setelah konfirmasi iklan.
-      Jika diarahkan ke halaman iklan, kembali ke halaman ini
-      untuk melanjutkan video.
+      Nikmati video sampai selesai.
     </div>
 
   </div>
 
+
   <div class="divider"></div>
 
-  <!-- =========================
-       COLLECTION
-  ========================== -->
+
+  <!-- KUMPULAN VIDEO -->
 
   <div class="collection-title">
     📺 Kumpulan Video
@@ -791,20 +712,24 @@ footer{
     href="https://www.profitableratecpmnetwork.com/dzth71h9?key=0d1e630d97de4d34d79e6dd18d6a2fe8"
     target="_blank"
     rel="noopener noreferrer">
+
     ▶ Lihat Kumpulan Video
+
   </a>
 
-  <!-- =========================
-       TELEGRAM
-  ========================== -->
+
+  <!-- TELEGRAM -->
 
   <a
     class="telegram"
     href="https://t.me/asupan_videyy1"
     target="_blank"
     rel="noopener noreferrer">
+
     ✈️ Gabung Telegram
+
   </a>
+
 
   <footer>
     © 2026 Trending Video
@@ -814,10 +739,13 @@ footer{
 
 
 <!-- ==================================================
-     INITIAL PRESENTATION
+     TAMPILAN AWAL
+     KONFIRMASI HANYA SEKALI
 ================================================== -->
 
-<div class="initial-overlay" id="initialOverlay">
+<div
+  class="initial-overlay"
+  id="initialOverlay">
 
   <div class="initial-box">
 
@@ -825,62 +753,28 @@ footer{
       ▶
     </div>
 
-    <div class="initial-kicker">
-      VIDEO READY
-    </div>
-
     <h2>
       Tonton Iklan Terlebih Dahulu
     </h2>
 
     <p>
-      Silakan tonton iklan terlebih dahulu untuk melanjutkan video.
-      Setelah itu, kembali ke halaman ini dan tekan tombol konfirmasi
-      bahwa kamu sudah membuka iklan.
+      Silakan tonton iklan terlebih dahulu untuk
+      melanjutkan video. Setelah itu, kembali ke
+      halaman ini untuk mengonfirmasi bahwa kamu
+      sudah membuka iklan.
     </p>
 
     <button
       class="initial-button"
       id="initialAdButton">
+
       ▶ Tonton Iklan
+
     </button>
 
     <div class="initial-note">
-      Setelah membuka iklan, kembali ke halaman ini untuk melanjutkan.
+      Setelah membuka iklan, kembali ke halaman ini.
     </div>
-
-  </div>
-
-</div>
-
-
-<!-- ==================================================
-     RETURN CONFIRMATION
-================================================== -->
-
-<div class="return-overlay" id="returnOverlay">
-
-  <div class="return-box">
-
-    <div class="return-icon">
-      ✓
-    </div>
-
-    <h2 id="returnTitle">
-      Iklan Sudah Dibuka
-    </h2>
-
-    <p id="returnText">
-      Jika kamu sudah selesai melihat iklan,
-      tekan tombol di bawah untuk mengonfirmasi
-      dan melanjutkan ke video.
-    </p>
-
-    <button
-      class="confirm-btn"
-      id="confirmBtn">
-      ✓ Konfirmasi &amp; Lanjutkan
-    </button>
 
   </div>
 
@@ -893,119 +787,91 @@ footer{
 ================================================== */
 
 const DIRECT_LINK =
-  "https://www.profitableratecpmnetwork.com/dzth71h9?key=0d1e630d97de4d34d79e6dd18d6a2fe8";
-
-const VIDEO_URL =
-  "https://cdn2.videy.co/6nesuAJA1.mp4";
+"https://www.profitableratecpmnetwork.com/dzth71h9?key=0d1e630d97de4d34d79e6dd18d6a2fe8";
 
 const STAGE_KEY =
-  "video_gate_stage_v3";
+"video_stage_final";
 
 const RETURN_KEY =
-  "video_gate_return_v3";
+"video_return_final";
 
 const POSITION_KEY =
-  "video_gate_position_v3";
+"video_position_final";
 
 
 /*
-  STAGE
+STAGE:
 
-  0 = belum melewati iklan awal
-  1 = sudah iklan awal, menunggu gate 15 detik
-  2 = sudah gate 15 detik, menunggu gate 40 detik
-  3 = semua gate selesai
+0 = belum melewati iklan awal
+1 = sudah konfirmasi awal, menuju gate 15
+2 = sudah melewati gate 15, menuju gate 40
+3 = semua gate selesai
 */
 
 let stage =
-  parseInt(localStorage.getItem(STAGE_KEY) || "0",10);
+parseInt(
+  localStorage.getItem(STAGE_KEY) || "0",
+  10
+);
 
-let returnGate =
-  parseInt(localStorage.getItem(RETURN_KEY) || "-1",10);
+let returnPoint =
+parseInt(
+  localStorage.getItem(RETURN_KEY) || "-1",
+  10
+);
 
 let gateLock = false;
 
 
 /* ==================================================
-   ELEMENTS
+   ELEMENT
 ================================================== */
 
 const video =
-  document.getElementById("mainVideo");
+document.getElementById("mainVideo");
 
 const centerPlay =
-  document.getElementById("centerPlay");
+document.getElementById("centerPlay");
 
 const playBtn =
-  document.getElementById("playBtn");
-
-const fullscreenBtn =
-  document.getElementById("fullscreenBtn");
+document.getElementById("playBtn");
 
 const progressArea =
-  document.getElementById("progressArea");
+document.getElementById("progressArea");
 
 const progress =
-  document.getElementById("progress");
+document.getElementById("progress");
 
-const currentTimeEl =
-  document.getElementById("currentTime");
+const currentTime =
+document.getElementById("currentTime");
 
-const durationEl =
-  document.getElementById("duration");
+const duration =
+document.getElementById("duration");
 
-const initialOverlay =
-  document.getElementById("initialOverlay");
-
-const initialAdButton =
-  document.getElementById("initialAdButton");
-
-const returnOverlay =
-  document.getElementById("returnOverlay");
-
-const returnTitle =
-  document.getElementById("returnTitle");
-
-const returnText =
-  document.getElementById("returnText");
-
-const confirmBtn =
-  document.getElementById("confirmBtn");
-
-const adOverlay =
-  document.getElementById("adOverlay");
-
-const adButton =
-  document.getElementById("adButton");
+const fullscreenBtn =
+document.getElementById("fullscreenBtn");
 
 const shareBtn =
-  document.getElementById("shareBtn");
+document.getElementById("shareBtn");
+
+const initialOverlay =
+document.getElementById("initialOverlay");
+
+const initialAdButton =
+document.getElementById("initialAdButton");
+
+const adOverlay =
+document.getElementById("adOverlay");
+
+const adButton =
+document.getElementById("adButton");
 
 
 /* ==================================================
-   HELPERS
+   SAVE STAGE
 ================================================== */
 
-function formatTime(seconds){
-
-  if(!isFinite(seconds)){
-    return "0:00";
-  }
-
-  seconds =
-    Math.max(0,Math.floor(seconds));
-
-  const minutes =
-    Math.floor(seconds / 60);
-
-  const secs =
-    String(seconds % 60).padStart(2,"0");
-
-  return minutes + ":" + secs;
-}
-
-
-function saveStage(value){
+function setStage(value){
 
   stage = value;
 
@@ -1015,6 +881,10 @@ function saveStage(value){
   );
 }
 
+
+/* ==================================================
+   SAVE POSITION
+================================================== */
 
 function savePosition(){
 
@@ -1027,138 +897,90 @@ function savePosition(){
       POSITION_KEY,
       String(video.currentTime)
     );
+
   }
+
 }
 
 
-function clearReturn(){
+/* ==================================================
+   FORMAT TIME
+================================================== */
 
-  localStorage.removeItem(RETURN_KEY);
+function formatTime(seconds){
 
-  returnGate = -1;
+  if(!isFinite(seconds)){
+    return "0:00";
+  }
+
+  seconds =
+  Math.max(
+    0,
+    Math.floor(seconds)
+  );
+
+  const min =
+  Math.floor(seconds / 60);
+
+  const sec =
+  String(seconds % 60)
+  .padStart(2,"0");
+
+  return min + ":" + sec;
 }
 
 
-function openDirectLink(returnPoint){
+/* ==================================================
+   OPEN DIRECT LINK
+================================================== */
+
+function openAd(returnPosition){
+
+  /*
+    Simpan tujuan ketika user kembali.
+    
+    0  = iklan awal
+    15 = kembali otomatis ke video
+    40 = kembali otomatis ke video
+  */
 
   localStorage.setItem(
     RETURN_KEY,
-    String(returnPoint)
+    String(returnPosition)
   );
 
   savePosition();
 
   window.location.href =
-    DIRECT_LINK;
+  DIRECT_LINK;
 }
 
 
 /* ==================================================
-   INITIAL STATE
+   INITIAL SCREEN
 ================================================== */
 
-function showInitialGate(){
+function showInitial(){
 
-  initialOverlay.classList.remove("hidden");
-
-  returnOverlay.classList.remove("show");
-
-  adOverlay.classList.remove("show");
+  initialOverlay.classList.remove(
+    "hidden"
+  );
 
   video.pause();
 }
 
 
-function hideInitialGate(){
+function hideInitial(){
 
-  initialOverlay.classList.add("hidden");
+  initialOverlay.classList.add(
+    "hidden"
+  );
+
 }
 
 
 /* ==================================================
-   RETURN CONFIRMATION
-================================================== */
-
-function showReturnConfirmation(point){
-
-  initialOverlay.classList.add("hidden");
-
-  adOverlay.classList.remove("show");
-
-  if(point === 0){
-
-    returnTitle.textContent =
-      "Iklan Sudah Dibuka";
-
-    returnText.textContent =
-      "Jika kamu sudah selesai melihat iklan, tekan tombol di bawah untuk mengonfirmasi dan melanjutkan ke video.";
-
-  }
-
-  else if(point === 15){
-
-    returnTitle.textContent =
-      "Lanjutkan Video";
-
-    returnText.textContent =
-      "Iklan sudah dibuka. Konfirmasi untuk melanjutkan video dari sekitar detik 15.";
-
-  }
-
-  else if(point === 40){
-
-    returnTitle.textContent =
-      "Lanjutkan Video";
-
-    returnText.textContent =
-      "Iklan sudah dibuka. Konfirmasi untuk melanjutkan video dari sekitar detik 40.";
-
-  }
-
-  returnOverlay.classList.add("show");
-
-  video.pause();
-}
-
-
-/* ==================================================
-   CHECK RETURN FROM AD
-================================================== */
-
-function checkReturnFromAd(){
-
-  returnGate =
-    parseInt(
-      localStorage.getItem(RETURN_KEY) || "-1",
-      10
-    );
-
-  if(
-    returnGate === 0 ||
-    returnGate === 15 ||
-    returnGate === 40
-  ){
-
-    showReturnConfirmation(returnGate);
-
-  }
-
-  else{
-
-    if(stage === 0){
-      showInitialGate();
-    }
-
-    else{
-      hideInitialGate();
-    }
-
-  }
-}
-
-
-/* ==================================================
-   INITIAL AD BUTTON
+   TOMBOL IKLAN AWAL
 ================================================== */
 
 initialAdButton.addEventListener(
@@ -1166,173 +988,265 @@ initialAdButton.addEventListener(
   function(){
 
     /*
-      0 = iklan awal
-      Setelah kembali, user akan melihat
-      halaman konfirmasi.
+      0 berarti user sedang menuju
+      iklan pertama.
     */
 
-    openDirectLink(0);
+    openAd(0);
 
   }
 );
 
 
 /* ==================================================
-   CONFIRM BUTTON
+   KONFIRMASI IKLAN AWAL
 ================================================== */
 
-confirmBtn.addEventListener(
-  "click",
-  function(){
+function confirmInitialAd(){
 
-    const point = returnGate;
+  /*
+    Setelah kembali dari iklan awal,
+    hanya di sini user perlu melakukan
+    konfirmasi.
 
-    clearReturn();
+    Setelah ini TIDAK ADA konfirmasi lagi.
+  */
 
-    returnOverlay.classList.remove("show");
+  localStorage.removeItem(
+    RETURN_KEY
+  );
+
+  returnPoint = -1;
+
+  setStage(1);
+
+  gateLock = false;
+
+  hideInitial();
+
+  /*
+    Video selalu mulai dari 0.
+  */
+
+  try{
+    video.currentTime = 0;
+  }catch(e){}
+
+  localStorage.setItem(
+    POSITION_KEY,
+    "0"
+  );
+
+  /*
+    Jangan autoplay di tahap ini.
+    User menekan Play sendiri.
+  */
+
+  updateControls();
+
+}
+
+
+/* ==================================================
+   CEK KETIKA USER KEMBALI
+================================================== */
+
+function checkReturn(){
+
+  const pending =
+  parseInt(
+    localStorage.getItem(RETURN_KEY) || "-1",
+    10
+  );
+
+  /*
+    ==============================
+    KEMBALI DARI IKLAN AWAL
+    ==============================
+  */
+
+  if(pending === 0){
+
+    /*
+      Tampilkan konfirmasi satu-satunya.
+      
+      Kita menggunakan confirm() supaya
+      tidak mengubah tampilan player kamu.
+    */
+
+    const confirmed =
+    window.confirm(
+      "Iklan Sudah Dibuka.\n\n" +
+      "Jika kamu sudah selesai melihat iklan, " +
+      "tekan OK untuk melanjutkan ke video."
+    );
+
+    if(confirmed){
+
+      confirmInitialAd();
+
+    }
+
+    return;
+  }
+
+
+  /*
+    ==============================
+    KEMBALI DARI IKLAN 15 DETIK
+    ==============================
+  */
+
+  if(pending === 15){
+
+    localStorage.removeItem(
+      RETURN_KEY
+    );
+
+    returnPoint = -1;
+
+    /*
+      Stage sekarang berubah ke 2.
+      Tidak ada konfirmasi.
+    */
+
+    setStage(2);
 
     gateLock = false;
 
     /*
-      ===============================
-      INITIAL AD COMPLETED
-      ===============================
+      Lanjut otomatis sekitar 15.2 detik.
     */
 
-    if(point === 0){
-
-      saveStage(1);
-
-      video.pause();
+    const resume15 = function(){
 
       try{
-        video.currentTime = 0;
+
+        video.currentTime =
+        Math.min(
+          15.2,
+          Math.max(
+            0,
+            video.duration - 0.1
+          )
+        );
+
       }catch(e){}
 
-      localStorage.setItem(
-        POSITION_KEY,
-        "0"
+      updateControls();
+
+      /*
+        OTOMATIS PLAY.
+      */
+
+      video.play().catch(function(){});
+
+    };
+
+    if(video.readyState >= 1){
+
+      resume15();
+
+    }else{
+
+      video.addEventListener(
+        "loadedmetadata",
+        resume15,
+        {once:true}
       );
 
-      hideInitialGate();
-
-      updateControls();
-
-      /*
-        Video TIDAK autoplay.
-        User menekan tombol Play sendiri.
-      */
-
-      return;
     }
 
+    return;
+  }
+
+
+  /*
+    ==============================
+    KEMBALI DARI IKLAN 40 DETIK
+    ==============================
+  */
+
+  if(pending === 40){
+
+    localStorage.removeItem(
+      RETURN_KEY
+    );
+
+    returnPoint = -1;
 
     /*
-      ===============================
-      15 SECOND GATE COMPLETED
-      ===============================
+      Semua gate selesai.
     */
 
-    if(point === 15){
+    setStage(3);
 
-      saveStage(2);
+    gateLock = false;
 
-      hideInitialGate();
+    adOverlay.classList.remove(
+      "show"
+    );
 
-      video.pause();
+    const resume40 = function(){
 
       try{
 
-        if(
-          isFinite(video.duration) &&
-          video.duration > 15.2
-        ){
-
-          video.currentTime = 15.2;
-
-        }else{
-
-          video.currentTime = 15;
-
-        }
+        video.currentTime =
+        Math.min(
+          40.2,
+          Math.max(
+            0,
+            video.duration - 0.1
+          )
+        );
 
       }catch(e){}
-
-      savePosition();
 
       updateControls();
 
       /*
-        User menekan Play sendiri.
+        OTOMATIS PLAY.
       */
 
-      return;
+      video.play().catch(function(){});
+
+    };
+
+    if(video.readyState >= 1){
+
+      resume40();
+
+    }else{
+
+      video.addEventListener(
+        "loadedmetadata",
+        resume40,
+        {once:true}
+      );
+
     }
 
+    return;
+  }
 
-    /*
-      ===============================
-      40 SECOND GATE COMPLETED
-      ===============================
-    */
 
-    if(point === 40){
+  /*
+    ==============================
+    TIDAK ADA RETURN DARI IKLAN
+    ==============================
+  */
 
-      saveStage(3);
+  if(stage === 0){
 
-      hideInitialGate();
+    showInitial();
 
-      video.pause();
+  }else{
 
-      try{
-
-        if(
-          isFinite(video.duration) &&
-          video.duration > 40.2
-        ){
-
-          video.currentTime = 40.2;
-
-        }else{
-
-          video.currentTime = 40;
-
-        }
-
-      }catch(e){}
-
-      savePosition();
-
-      updateControls();
-
-      /*
-        Tidak ada gate lagi setelah ini.
-      */
-
-      return;
-    }
+    hideInitial();
 
   }
-);
 
-
-/* ==================================================
-   40 SECOND AD BUTTON
-================================================== */
-
-adButton.addEventListener(
-  "click",
-  function(){
-
-    /*
-      Simpan bahwa user sedang menuju
-      iklan pada gate 40 detik.
-    */
-
-    openDirectLink(40);
-
-  }
-);
+}
 
 
 /* ==================================================
@@ -1341,25 +1255,20 @@ adButton.addEventListener(
 
 function togglePlay(){
 
-  /*
-    Jangan izinkan video dimainkan
-    sebelum iklan awal dikonfirmasi.
-  */
-
   if(stage === 0){
 
-    showInitialGate();
+    showInitial();
 
     return;
+
   }
 
-  /*
-    Jangan izinkan play ketika gate overlay aktif.
-  */
-
-  if(adOverlay.classList.contains("show")){
+  if(
+    adOverlay.classList.contains("show")
+  ){
 
     return;
+
   }
 
   if(video.paused){
@@ -1371,6 +1280,7 @@ function togglePlay(){
     video.pause();
 
   }
+
 }
 
 
@@ -1386,28 +1296,38 @@ centerPlay.addEventListener(
 
 
 /* ==================================================
-   VIDEO PLAY STATE
+   VIDEO PLAY
 ================================================== */
 
 video.addEventListener(
   "play",
   function(){
 
-    playBtn.textContent = "❚❚";
+    playBtn.textContent =
+    "❚❚";
 
-    centerPlay.classList.add("hidden");
+    centerPlay.classList.add(
+      "hidden"
+    );
 
   }
 );
 
 
+/* ==================================================
+   VIDEO PAUSE
+================================================== */
+
 video.addEventListener(
   "pause",
   function(){
 
-    playBtn.textContent = "▶";
+    playBtn.textContent =
+    "▶";
 
-    centerPlay.classList.remove("hidden");
+    centerPlay.classList.remove(
+      "hidden"
+    );
 
   }
 );
@@ -1427,11 +1347,12 @@ video.addEventListener(
       return;
     }
 
+
     /*
-      =====================================
-      STAGE 1
-      AUTO REDIRECT TEPAT DI 15 DETIK
-      =====================================
+      ====================================
+      15 DETIK
+      OTOMATIS REDIRECT
+      ====================================
     */
 
     if(
@@ -1450,22 +1371,25 @@ video.addEventListener(
       savePosition();
 
       /*
-        Jangan ubah stage di sini.
-        Stage berubah menjadi 2 setelah
-        user kembali dan menekan konfirmasi.
+        LANGSUNG KE DIRECT LINK.
+
+        Saat kembali:
+        TIDAK ADA KONFIRMASI.
+
+        Video otomatis lanjut.
       */
 
-      openDirectLink(15);
+      openAd(15);
 
       return;
+
     }
 
 
     /*
-      =====================================
-      STAGE 2
-      GATE PADA 40 DETIK
-      =====================================
+      ====================================
+      40 DETIK
+      ====================================
     */
 
     if(
@@ -1483,9 +1407,17 @@ video.addEventListener(
 
       savePosition();
 
-      adOverlay.classList.add("show");
+      /*
+        Pada 40 detik tampilkan
+        tombol Tonton Iklan.
+      */
+
+      adOverlay.classList.add(
+        "show"
+      );
 
       return;
+
     }
 
   }
@@ -1493,47 +1425,60 @@ video.addEventListener(
 
 
 /* ==================================================
-   UPDATE CONTROLS
+   40 DETIK - TONTON IKLAN
+================================================== */
+
+adButton.addEventListener(
+  "click",
+  function(){
+
+    /*
+      Tidak ada konfirmasi ketika kembali.
+      Langsung lanjut otomatis.
+    */
+
+    openAd(40);
+
+  }
+);
+
+
+/* ==================================================
+   CONTROLS
 ================================================== */
 
 function updateControls(){
 
   const current =
-    video.currentTime || 0;
+  video.currentTime || 0;
 
-  const duration =
-    video.duration || 0;
+  const total =
+  video.duration || 0;
 
-  currentTimeEl.textContent =
-    formatTime(current);
+  currentTime.textContent =
+  formatTime(current);
 
-  durationEl.textContent =
-    formatTime(duration);
+  duration.textContent =
+  formatTime(total);
 
-  if(duration > 0){
+  if(total > 0){
 
-    let percent =
-      (current / duration) * 100;
-
-    percent =
-      Math.max(
-        0,
-        Math.min(100,percent)
-      );
+    const percent =
+    (current / total) * 100;
 
     progress.style.width =
-      percent + "%";
-
-  }else{
-
-    progress.style.width = "0%";
+    Math.max(
+      0,
+      Math.min(100,percent)
+    ) + "%";
 
   }
+
 }
 
 
 /* ==================================================
-   PROGRESS / SEEK
+   PROGRESS BAR
 ================================================== */
 
 progressArea.addEventListener(
@@ -1541,63 +1486,78 @@ progressArea.addEventListener(
   function(e){
 
     if(stage === 0){
-      showInitialGate();
+
+      showInitial();
+
       return;
+
     }
 
-    if(adOverlay.classList.contains("show")){
+    if(
+      adOverlay.classList.contains("show")
+    ){
+
       return;
+
     }
 
-    if(!isFinite(video.duration)){
+    if(
+      !isFinite(video.duration)
+    ){
+
       return;
+
     }
 
     const rect =
-      progressArea.getBoundingClientRect();
+    progressArea.getBoundingClientRect();
 
     const ratio =
-      (e.clientX - rect.left) / rect.width;
+    (e.clientX - rect.left) /
+    rect.width;
 
     let target =
-      ratio * video.duration;
+    ratio * video.duration;
+
 
     /*
-      Stage 1:
-      Tidak boleh melewati 15 detik.
+      Jangan izinkan melewati gate 15.
     */
 
     if(stage === 1){
 
-      if(target >= 15){
-
-        target = 15;
-
-      }
+      target =
+      Math.min(
+        target,
+        15
+      );
 
     }
 
 
     /*
-      Stage 2:
-      Tidak boleh melewati 40 detik.
+      Jangan izinkan melewati gate 40.
     */
 
     if(stage === 2){
 
-      if(target >= 40){
-
-        target = 40;
-
-      }
+      target =
+      Math.min(
+        target,
+        40
+      );
 
     }
 
+
     video.currentTime =
-      Math.max(
-        0,
-        Math.min(video.duration,target)
-      );
+    Math.max(
+      0,
+      Math.min(
+        video.duration,
+        target
+      )
+    );
 
     savePosition();
 
@@ -1614,11 +1574,11 @@ fullscreenBtn.addEventListener(
   function(){
 
     const shell =
-      document.querySelector(".player-shell");
+    document.querySelector(
+      ".player-shell"
+    );
 
-    if(
-      !document.fullscreenElement
-    ){
+    if(!document.fullscreenElement){
 
       if(shell.requestFullscreen){
 
@@ -1648,21 +1608,19 @@ shareBtn.addEventListener(
   "click",
   async function(){
 
-    const shareData = {
-      title:document.title,
-      text:"Tonton video ini",
-      url:window.location.href
-    };
-
     try{
 
-      if(
-        navigator.share
-      ){
+      if(navigator.share){
 
-        await navigator.share(
-          shareData
-        );
+        await navigator.share({
+
+          title:document.title,
+
+          text:"Tonton video ini",
+
+          url:window.location.href
+
+        });
 
       }else{
 
@@ -1670,7 +1628,9 @@ shareBtn.addEventListener(
           window.location.href
         );
 
-        alert("Link berhasil disalin.");
+        alert(
+          "Link berhasil disalin."
+        );
 
       }
 
@@ -1699,7 +1659,7 @@ setInterval(
 
 
 /* ==================================================
-   PAGE LOAD
+   LOADED METADATA
 ================================================== */
 
 video.addEventListener(
@@ -1708,110 +1668,13 @@ video.addEventListener(
 
     updateControls();
 
-    /*
-      Kalau sedang menunggu konfirmasi
-      dari iklan, jangan restore posisi dulu.
-      Konfirmasi yang akan menentukan posisi.
-    */
-
-    const pendingReturn =
-      parseInt(
-        localStorage.getItem(RETURN_KEY) || "-1",
-        10
-      );
-
-    if(
-      pendingReturn === 0 ||
-      pendingReturn === 15 ||
-      pendingReturn === 40
-    ){
-
-      video.pause();
-
-      return;
-    }
-
-    /*
-      Jika stage 1/2/3 dan ada posisi tersimpan,
-      restore posisi.
-    */
-
-    if(stage > 0){
-
-      const saved =
-        parseFloat(
-          localStorage.getItem(POSITION_KEY) || "0"
-        );
-
-      if(
-        isFinite(saved) &&
-        saved >= 0 &&
-        saved < video.duration
-      ){
-
-        /*
-          Jangan restore melewati gate.
-        */
-
-        let safePosition = saved;
-
-        if(stage === 1){
-          safePosition =
-            Math.min(safePosition,15);
-        }
-
-        if(stage === 2){
-          safePosition =
-            Math.min(safePosition,40);
-        }
-
-        try{
-          video.currentTime =
-            safePosition;
-        }catch(e){}
-
-      }
-
-    }
-
   }
 );
 
 
 /* ==================================================
-   VIDEO ENDED
-================================================== */
-
-video.addEventListener(
-  "ended",
-  function(){
-
-    /*
-      Setelah video benar-benar selesai,
-      reset agar sesi berikutnya kembali
-      melalui iklan awal.
-    */
-
-    saveStage(0);
-
-    localStorage.removeItem(
-      POSITION_KEY
-    );
-
-    localStorage.removeItem(
-      RETURN_KEY
-    );
-
-    gateLock = false;
-
-  }
-);
-
-
-/* ==================================================
-   PAGE SHOW
-   Penting ketika user kembali memakai
-   tombol BACK browser.
+   PAGESHOW
+   Penting saat kembali dengan tombol BACK
 ================================================== */
 
 window.addEventListener(
@@ -1821,10 +1684,10 @@ window.addEventListener(
     setTimeout(
       function(){
 
-        checkReturnFromAd();
+        checkReturn();
 
       },
-      100
+      150
     );
 
   }
@@ -1846,7 +1709,7 @@ document.addEventListener(
       setTimeout(
         function(){
 
-          checkReturnFromAd();
+          checkReturn();
 
         },
         150
@@ -1859,10 +1722,10 @@ document.addEventListener(
 
 
 /* ==================================================
-   INITIAL CHECK
+   INIT
 ================================================== */
 
-checkReturnFromAd();
+checkReturn();
 
 updateControls();
 
@@ -1870,26 +1733,57 @@ updateControls();
 
 
 <!-- HISTATS -->
+
 <script type="text/javascript">
 var _Hasync= _Hasync|| [];
-_Hasync.push(['Histats.start','1,5043495,4,0,0,0,00010000']);
-_Hasync.push(['Histats.fasi','1']);
-_Hasync.push(['Histats.track_hits','']);
+
+_Hasync.push([
+  'Histats.start',
+  '1,5043495,4,0,0,0,00010000'
+]);
+
+_Hasync.push([
+  'Histats.fasi',
+  '1'
+]);
+
+_Hasync.push([
+  'Histats.track_hits',
+  ''
+]);
 
 (function(){
-var hs=document.createElement('script');
-hs.type='text/javascript';
-hs.async=true;
-hs.src=('https:'==document.location.protocol?'https://s10':'http://s10')
-+'.histats.com/js15_as.js';
-(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0])
+
+var hs =
+document.createElement('script');
+
+hs.type =
+'text/javascript';
+
+hs.async = true;
+
+hs.src =
+('https:' ==
+document.location.protocol
+  ? 'https://s10'
+  : 'http://s10')
++
+'.histats.com/js15_as.js';
+
+(
+  document.getElementsByTagName('head')[0]
+  ||
+  document.getElementsByTagName('body')[0]
+)
 .appendChild(hs);
+
 })();
 </script>
 
 <noscript>
 <a href="/" target="_blank">
-<img src="//sstatic1.histats.com/0.gif?5043495&101"
+<img
+src="//sstatic1.histats.com/0.gif?5043495&101"
 alt="website statistics"
 border="0">
 </a>
